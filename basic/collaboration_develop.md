@@ -4,9 +4,9 @@
 - 참고 사이트 : https://github.com/JaeYeopHan/Interview_Question_for_Beginner
 
 ## 목차
-1. [개발 시 생각할 것](###개발상식)
-2. [git vs svn](###gitvssvn)
-3. [IT인프라](###IT인프라)
+1. [개발 시 생각할 것](###-개발-시-생각할-것)
+2. [git vs svn](###-git-vs-svn)
+3. [IT인프라](###-IT-인프라)
 ---
 ### 개발 시 생각할 것
 #### 읽기 쉬운 코드
