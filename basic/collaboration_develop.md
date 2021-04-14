@@ -1,12 +1,13 @@
-# 면접 준비
+# 면접 준비 - 협업의 기본
 > 나만의 언어로 정리하는 면접 준비  
 
-- 참고 사이트 : https://github.com/JaeYeopHan/Interview_Question_for_Beginner
+- [참고 사이트](#https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 
 ## 목차
 1. [개발 시 생각할 것](#개발-시-생각할-것)
 2. [git vs svn](#git-vs-svn)
 3. [IT인프라](#it-인프라)
+4. [참고 사이트](#참고-사이트)
 ---
 ### 개발 시 생각할 것
 #### 읽기 쉬운 코드
