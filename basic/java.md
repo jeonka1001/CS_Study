@@ -2,8 +2,9 @@
 > 나만의 언어로 하는 면접준비
 
 ## 질문 목차
-
-
+1. [자바의 대표 Collection](#java의-대표-collection에는-무엇이-있을까?)
+2. [Java version](#java-사용-버전)
+3. [트랜잭션](#트랜잭션-처리?)
 
 ### Java의 대표 Collection에는 무엇이 있을까?
 - 대표적으로 List Map Set Stack Queue 가 있습니다.  
@@ -43,6 +44,6 @@
 
 --- 
 
-### 트랜잭션 처리 ?
+### 트랜잭션 처리?
 - db connection 객체의 setAutoCommit 을 false 로 해주고 트랜잭션이 정상 작동 시 commit 실패시 rollback 
 
