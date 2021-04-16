@@ -106,8 +106,8 @@
 |경로의 방향성|없다|있다(단방향,양방향)|
 
 ## 참고 사이트 
-- [공부 방향](#https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
-- [Map 관련](#https://rangken.github.io/blog/2015/java.map/)  
-- [hash table](#https://mangkyu.tistory.com/102)  
-- [RedBlackTree](#https://m.blog.naver.com/min-program/221231697752)
-- [graph vs tree](#https://sexycoder.tistory.com/79)
+- [공부 방향](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
+- [Map 관련](https://rangken.github.io/blog/2015/java.map/)  
+- [hash table](https://mangkyu.tistory.com/102)  
+- [RedBlackTree](https://m.blog.naver.com/min-program/221231697752)
+- [graph vs tree](https://sexycoder.tistory.com/79)
