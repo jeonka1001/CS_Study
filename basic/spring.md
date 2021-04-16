@@ -3,8 +3,9 @@
 
 ## 질문 목차
 
+---
 
-### Spring 을 사용하는 이유
+## Spring 을 사용하는 이유
 - 엔터프라이즈 시스템 개발은 복잡하다. 스프링은 이러한 **복잡함 해결** 을 도와주며 개발자가 최대한 **개발 하는 것 에만 집중** 할 수 있도록 해주기 때문에 spring 을 사용한다.
 
 ##### 기업 시스템 개발이 복잡한 이유 ?
@@ -20,31 +21,64 @@
 - 이 경우 기술 제약에 대해 변경 사항이 있을 경우 클래스 내부는 수정하지 않아도 된다.
     - DB 아이디 변경, 서버 주소 변경 등 ( XML 을 통해 함 )
 
-### POJO 프로그래밍 ?
+---
+
+## POJO 프로그래밍 ?
 > POJO : plain old java object  
 - 특정 기능을 사용하기 위해 특정 환경에 종속되지 않는 것
     - 서블릿 객체와 같이 특정 기능을 수행하기 위해 클래스나 인터페이스를 구현하지 않는 것
 
-### IOC/DI 란? 
+---
+
+## IOC/DI 란? 
 > IOC : 제어의 역전
 > DI : 의존성 주입  
 
-##### IOC ( Inversion of Control)
-- A 라는 클래스가 B 라는 클래스의 기능을 사용할 경우 A 클래스는 내부적으로 B를 갖고 있으며 이를 관리해야 한다.  
-- 이 때 B를 A 가 관리하지 않고 **제 3자에게 책임을 위임 하는 것을 IOC** 라고 한다.
-    - B를 수정 시 A를 수정하지 않아도 된다.  
+### IOC ( Inversion of Control)
+- A 라는 클래스의 비즈니스 로직에서 B 라는 클래스를 사용할 때 직접 의존성을 주입하지 않는 것을 말한다. 이때 **의존성을 주입** 하는 것을 **DI** 라 하며, 이것이 간접적으로 헹해지기 때문에 느슨한 결합 이라 한다.
 
-##### DI ( Dependency Injection)
-- 런타임 시에 의존성을 연결해 주는 작업 
-- 코드상으로 의존 관계가 나타나지 않기 때문에 의존 관계가 있는 대상이 변경되어도 영향을 받지 않는다.
+- B를 A 가 관리하지 않고 외부에서 건네받아 사용하기 떼문에 B 가 변경될 경우 A에 영향이 없기 때문에 코드 관리에 용이하다
 
-###### DI의 종류
+##### DI의 종류
 > setter, constructor, method injection 이 있다.  
 
-**_Bean_**  
-- spring 에서 의존성 주입을 위해 관리하는 객체를 Bean 이라고 한다. 
-- Bean 들을 관리하는 것을 **Bean Factory(ApplicationContext)** 라고 한다.
+##### Bean
+- spring 에서 객체 의존성 주입을 위해 의존성을 관리하는 데 이때 관리하는 의존성 즉 객체를 bean 이라고 한다. 
+- spring 을 통해 의존성을 주입하기 위해서는 bean 에 등록해 spring이 관리할 수 있도록 알려야 한다.
+
+**_등록 방식_**  
+1. 직접 클래스를 구성하고 어노테이션 태그  
+2. Configuration 어노테이션이 붙은 클래스에 직접 등록
+
+---
+
+## AOP ( Aspect oriented Programming)
+- 관점 지향 프로그래밍
+- 메서드 중 공통으로 사용하는 기능적인 역할을 비즈니스 로직에서 분리하여 코드의 중복 없이 재활용하는 것 
+    - 분리 대상 : 데이터베이스 연결, 로깅, 파일 입출력 등 ( 비즈니스 로직이 아닌 기능적인 역할 )
+
+
+
+### PSA
+- 
+
+### MVC Model View Controller
+- 
+
+
+### JPA
+기존 MyBatis 는 SQL문을 미리 등록해 둔 후 Mapper Class 를 통해 DAO객체에서 SQL문을 실행했다.  
+따라서 모든 SQL 에 해당하는 메서드를 만들고 
+
+## Annotation 정리
+
+#### @ComponentScan 
+- @Controller @Service @Repository @Configuration @Component 어노테이션이 붙은 Bean 을 찾아서 컨텍스트에 등록을 해준다.
+###### 모든 Component 를 @Component로 다 쓰지 않는 이유는 ? 
+예를 들어 @Repository 는 DAO 에 붙이는 어노테이션 인데 DAO 메소드에서 런타임 시 발생할 수 있는 예외
 
 
 ## 참고 사이트
 - [spring 기초부터](#https://sabarada.tistory.com/67?category=803157)  
+
+

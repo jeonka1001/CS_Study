@@ -71,6 +71,12 @@
 
 --- 
 
+### 바이트코드 vs 바이너리코드 vs 기계어
+- 바이너리 코드 : 0 과 1 이 나열된 코드로 컴퓨터가 이해할 수 있는 코드이다.
+- 바이트 코드 : 0과 1로 나열된 코드로 가상 머신에서 이해할 수 있는 코드
+- 기계어 코드 : 0 과 1 이 나열된 코드로 CPU 에서 읽을 수 있으며 각 CPU 마다 다르다.
+
+
 ## 참고 사이트 
 - [공부 방향](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 - [읽기 쉬운 코드, 중복되는 로직 추출](https://jbee.io/etc/what-is-good-code/)
