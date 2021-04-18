@@ -11,7 +11,7 @@
 ## JDK, JRE, JVM
 > 범주는 JDK 안에 JRE 안에 JVM 이 있다.  
 - JDK : Java Development Kit 의 약자로 JRE + 개발을 위해 필요한 도구 를 포함한다.  
-- JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일을 가지고 있다.  
+- JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일(javac, 디버거, 컴파일러) 을 가지고 있다.  
 - JVM : Java Virtual Machine 의 약자로 자바 소스코드로부터 만들어지는 자바 바이너리 파일을 실행할 수 있다.  
 
 #### Oracle JDK vs OpenJDK
@@ -23,7 +23,8 @@
 --- 
 
 ## 자바의 메모리 구조
-
+- class / method / stack 크게 3가지로 분류된다.
+class : 같은 의미로 static, method 영역이라 불리워 지며 static 변수, 전역변수, 클래스 파일의 바이트코드, 
 
 ---
 
@@ -87,7 +88,7 @@ out.println() // System. 을 생략할 수 있다.
 - 이 때 유효한 참조의 기준은 root set 의 참조 여부로 한다.
 
 ###### root set ?
-- root set 은 메서드영역의 정적 변수, 메서드 실행 시 사용하는 지역변수, 파라미터의 참조, 자바 네이티브 인터페이스에 의해 생성된 객체의 참조 가 이루어 지는 객체를 root set 이라고 한다.
+- root set 은 메서드영역의 정적 변수, 메서드 실행 시 사용하는 지역변수, 파라미터가 참조 하는 객체를 root set 이라고 한다.
 
 ## Exception
 - unchecked exception : 런타임 시 발생할 수 있는 예외
