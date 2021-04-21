@@ -62,7 +62,21 @@
 ---
 
 ## 추상 클래스 vs 인터페이스
+- 추상 클래스 : 추상 메소드가 하나 이상 포함되어있거나, abstract 로 선언된 클래스를 말한다.
+- 인터페이스 : 모든 메소드가 추상 메소드인 것을 말한다.(자바 8에서는 default 를 이용해서 일반 메서드 정의 가능)
+#### 공통점 
+- 상속하거나 구현하는 클래스에게 내부에 있는 추상 메서드를 구현하도록 한다.
+- 인스턴스 생성 ( new 를 통한 객체 생성 )이 불가능하다.
+
+#### 차이점
 - 자바는 다중 상속이 안되기 때문에 추상 클래스는 한개만 상속할 수 있으며, 인터페이스 구현은 여러개의 인터페이스를 구현할 수 있다.
+- 인터페이스의 모든 변수는 기본적으로 ```public static final``` 이지만 추상 클래스는 아니다.
+
+#### 사용 케이스
+- 추상 클래스
+    - 클래스가 서로 공통으로 갖는 메서드나 멤머변수가 많은 경우
+- 인터페이스
+    - 서로 연관성이 없는 클래스가 같은 행동을 할 수 있는 경우 ( cloneable, comparable 등.. )
 
 ## 다형성
 - 상속과 큰 관련이 있는 개념으로, **여러가지 형태를 가질 수 있는 능력** 을 의미 합니다.
@@ -173,7 +187,22 @@ out.println() // System. 을 생략할 수 있다.
 ---
 
 ## equals() hashCode() == 
-- 
+- ```==``` 의 경우 기본 자료형은 객체가 같은지 비교하지만, 객체나 참조 타입의 경우 객체가 가리키는 주소를 비교한다.
+- ```equals()``` 의 경우 객체의 내용이 같은지 비교한다.  
+#### hashcode 와 equals
+- ```equals``` 에 의해 같은 객체라는 결과가 나온 객체를 ```hash``` 값을 사용하는 자료 구조에 넣었을 경우 중복으로 인식하지 않아 중복된 객체 모두 들어갈 수 있다.
+- 이를 막기위해 객체 내에 ```equals``` 를 재정의했으면 ```hashcode``` 또한 재정의 하여 ```hash``` 계열의 자료구조 사용 시 오류가 없도록 해야한다.
+- ```equals``` 로 같은 객체라면 ```hashcode``` 또한 같은 객체여야 한다.
+- 이와 반대로 ```hashcode``` 가 같다고 해서 ```equals``` 가 같지는 않다.
+
+### valueOf vs parseInt
+- valueOf 의 경우 객체 타입을 리턴하며, parseInt의 경우 원시타입을 리턴한다.
+
+### valueOf vs toString vs casting
+||valueOf|toString|Casting|
+|--|--|--|--|
+|null|예외 발생하지 않음 (공백 출력)|NPE 발생|NPE 발생|
+|Object is not string type|예외발생X|예외발생X|ClassCastException 발생|
 
 ---
 
@@ -199,6 +228,13 @@ out.println() // System. 을 생략할 수 있다.
 ## String, StringBuilder, StringBuffer
 - String 은 객체 타입이기 때문에 heap 에 할당된다. 그러나 불변 객체이기 때문에 기존 객체를 수정 할 경우 새로운 객체가 생성된다. 따라서 이를 막기 위해 ```StringBuffer``` , ```StringBuilder``` 를 사용한다.
 - StringBuffer 와 StringBuilder 는 Thread Safe 에 차이가 있습니다. 단일 스레드에서는 StringBuilder 가 성능이 뛰어나지만 멀티 스레드 환경에서 동기화를 지원하지 않기 때문에 멀티 스레드 환경에서는 StringBuffer 를 사용해야 한다.
+
+#### thread safe  ? 
+- 멀티 스레드 환경에서 어떤 메서드 객체 클래스가 여러 스레드로부터 동시 접근이 이루어 져도 프로그램상 문제가 없는 것을 말한다.
+
+#### thread 구현 방법
+- thread 클래스를 상속받는다.
+- runnable interface를 구현한다.
 
 ---
 
@@ -227,6 +263,33 @@ out.println() // System. 을 생략할 수 있다.
 ### Atomic class
 
 ----
+
+## final 
+> 해당 키워드가 붙은 대상을 재 선언 불가능 하도록 하는 것
+> Class, Method, Variable, Argument 에 사용가능
+#### Use Class
+- 해당 클래스 상속 불가능
+- 내부 변수 setter를 통해 변경 가능
+#### Use method
+- 해당 메서드의 클래스 상속 시 자식 클래스에서 오버라이딩 불가능
+#### Use Variable
+- 해당 변수 재 선언 불가능
+- 해당 변수에 다른 객체 할당 불가능
+#### Use Argument
+- 전달받은 전달인자 변경 불가능
+
+---
+
+## optional
+- NPE( NullPointerException ) 을 방지하기 위한 키워드
+- 일종의 Wrapper class 로 null 값을 감싸는 Wrapper class 이다.
+- 제네릭 기법을 통해 감싸고자 하는 객체를 ```Optional``` 객체를 통해 감싸며, ```get``` 을 통해 꺼낼 수 있다.
+
+
+
+## wrapper class 
+
+
 
 ## 참고 사이트
 - [JDK, JVM, JRE](#https://wikidocs.net/257)
