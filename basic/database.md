@@ -2,8 +2,19 @@
 > 나만의 언어로 준비하는 면접준비
 
 ## 목록
+- [트랜잭션](#트랜잭션)
+- [PK vs FK](#pk-vs-fk)
+- [인덱스](#인덱스)
+- [join](#join)
+- [정규화](#정규화)
 
 ----
+## DDL DML DCL
+- DDL(database define language)
+    - 데이터 베이스 정의어
+    - create, alter, drop, rename,truncate 등이 있다
+- 
+
 ## 트랜잭션
 > 한꺼번에 수행되어야 할 연산의 단위
 ### ACID
