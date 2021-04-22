@@ -280,16 +280,15 @@ out.println() // System. 을 생략할 수 있다.
 
 ---
 
-## optional
-- NPE( NullPointerException ) 을 방지하기 위한 키워드
-- 일종의 Wrapper class 로 null 값을 감싸는 Wrapper class 이다.
-- 제네릭 기법을 통해 감싸고자 하는 객체를 ```Optional``` 객체를 통해 감싸며, ```get``` 을 통해 꺼낼 수 있다.
-
-
-
 ## wrapper class 
+- 감싸다 라는 의미로 기본 타입 데이터를 객체화 하기 위한 클래스
+- 기본 타입의 경우 기본 메서드를 사용할 수 없지만, Wrapper 클래스의 경우 compareTo 와 같은 메서드를 사용할 수 있다.
+- 따라서 기본 타입의 경우 Collection 객체의 데이터값으로 사용할 수 없지만, Wrapper클래스는 사용할 수 있다. 
 
-
+#### optional
+- 일종의 Wrapper class 로 null 값을 감싸는 Wrapper class 이다.
+- NPE( NullPointerException ) 을 방지하기 위한 키워드
+- 제네릭 기법을 통해 감싸고자 하는 객체를 ```Optional``` 객체를 통해 감싸며, ```get``` 을 통해 꺼낼 수 있다.
 
 ## 참고 사이트
 - [JDK, JVM, JRE](#https://wikidocs.net/257)
