@@ -79,6 +79,3 @@
 - 기계어 코드 : 0 과 1 이 나열된 코드로 CPU 에서 읽을 수 있으며 각 CPU 마다 다르다.
 
 
-## 참고 사이트 
-- [공부 방향](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
-- [읽기 쉬운 코드, 중복되는 로직 추출](https://jbee.io/etc/what-is-good-code/)
