@@ -41,6 +41,11 @@
 
 --- 
 
+## OOP ( Object Oriented Programming )
+- 현실 세계의 
+
+---
+
 ## 자바의 메모리 구조
 - 크게 static stack class 영역으로 나누어 진다.
 #### Static 영역(= class, method )
