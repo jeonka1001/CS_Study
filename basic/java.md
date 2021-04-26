@@ -21,7 +21,7 @@
 > 범주는 JDK 안에 JRE 안에 JVM 이 있다.  
 - JDK : Java Development Kit 의 약자로 JRE + 개발을 위해 필요한 도구 를 포함한다.  
 - JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일(javac, 디버거, 컴파일러) 을 가지고 있다.  
-- JVM : Java Virtual Machine 의 약자로 자바 소스코드로부터 만들어지는 자바 바이너리 파일을 실행할 수 있다.  
+- JVM : Java Virtual Machine 의 약자로 자바 소스코드로부터 만들어지는 자바 바이 파일을 실행할 수 있다.  
 
 #### JVM
 > class loader, execution engine, garbage collector, runtime data area 
