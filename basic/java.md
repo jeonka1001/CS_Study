@@ -2,11 +2,10 @@
 > 나만의 언어로 하는 면접준비
 
 ## 질문 목차
-- [JDK, JRE, JVM](#jdk,-jrm,-jvm)
+- [JDK, JRE, JVM](#jdk,jrm,jvm)
 - [자바의 메모리 구조](#자바의-메모리-구조)
 - [추상 클래스와 인터페이스](#추상-클래스-vs-인터페이스)
 - [Import vs Package](#import-vs-package)
-- [트랜잭션처리](#트랜잭션처리)-- 수정하기
 - [자바의 대표 collection](#자바의-대표-collection)
 - [어노테이션](#어노테이션)
 - [마커 인터페이스](#마커-인터페이스)
@@ -120,6 +119,7 @@
 
 ---
 
+
 ## import vs package 
 > 컴파일러에게 소스파일에 사용된 클래스 패키지에 대한 정보를 주는 것 
 
@@ -148,11 +148,6 @@ out.println() // System. 을 생략할 수 있다.
 
 ---
 
-## 트랜잭션 처리?
-- db connection 객체의 setAutoCommit 을 false 로 해주고 트랜잭션이 정상 작동 시 commit 실패시 rollback 을 한다.
-
----
-
 ## 자바의 Collections Framework
 > Collection을 구현하는 클래스와 Map을 구현하는 클래스가 있다.
 #### Java의 Collection
@@ -167,7 +162,7 @@ out.println() // System. 을 생략할 수 있다.
 - Key는 중복일 수 없지만, Value 는 중복값을 저장할 수 있다.
 
 
-[이 후 자료구조는 여기 참고](#./datastructure.md)
+[이 후 자료구조는 여기 참고](https://github.com/jeonka1001/Study/blob/main/basic/datastructure.md)
 
 ---
 
