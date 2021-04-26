@@ -52,18 +52,32 @@
 
 ---
 
+## Spring MVC 작동 방식
+1. DispatcherServlet 이 클라이언트로부터 요청을 받는다  
+2. 요청을 다룰 Handler 선택을 위해 HandlerMapping 에게 요청한다.
+3. HandlerMapping 은 전/후처리 할 것을 interceptor 로 만든 후 Handler 를 실행한다.
+4. Handler 는 service 객체를 실행 후 결과와 View 이름을 DispatcherServlet에 전송한다
+5. DispatcherServlet 은 View 이름을 ViewResolver 에게 전달하여 View 객체를 얻은 후 View 를 보여준다
+
+---
+
 ## AOP ( Aspect oriented Programming)
 - 관점 지향 프로그래밍
 - 메서드 중 공통으로 사용하는 기능적인 역할을 비즈니스 로직에서 분리하여 코드의 중복 없이 재활용하는 것 
     - 분리 대상 : 데이터베이스 연결, 로깅, 파일 입출력 등 ( 비즈니스 로직이 아닌 기능적인 역할 )
 
-## PSA
+---
+
+## PSA ( portable service abstraction )
 - 개발자가 직접 관여하지 않는 기능을 추상화하여 제공하는 것 으로 개발자가 비즈니스 로직 외적으로 신경쓰지 않도록 도움을 주는 것 입니다.
 - spring 에서는 AOP 개념에서 비즈니스 로직과 분리한 기능적인 역할을 추상화하여 제공하는것이머, 자바에서 제공하는 API 인 JPA 또한 이것에 의해 사용되는 기술?  입니다.
+
+---
 
 ## MVC Model View Controller
 - Model : 데이터를 담는 객체 , View 사용자에게 직접 출력되는 화면, 
 
+---
 
 ## JPA
 기존 MyBatis 는 SQL문을 미리 등록해 둔 후 Mapper Class 를 통해 DAO객체에서 SQL문을 실행했다.  
@@ -75,6 +89,8 @@
 - Mapper 파일에 SQL 문을 작성하고 자바에 Mapper 클래스를 만들어 클래스의 메서드 하나와 쿼리문 하나를 매핑시켜 사용함
 - DAO 코드가 훨씬 간결해 진다., 유지보수가 쉬워진다.
 
+---
+
 ## Annotation 정리
 
 #### @ComponentScan 
@@ -82,7 +98,9 @@
 ###### 모든 Component 를 @Component로 다 쓰지 않는 이유는 ? 
 예를 들어 @Repository 는 DAO 에 붙이는 어노테이션 인데 DAO 메소드에서 런타임 시 발생할 수 있는 예외
 
+---
 
-
-
+## Filter vs Interceptor
+- fileter 는 어플리케이션에 등록되어 스프링과 무관한 자원에 대해 실행
+- interceptor 는 스프링 context 에 등록되어 controller 동작 전/후 에 실행된다.
 

@@ -204,18 +204,6 @@ out.println() // System. 을 생략할 수 있다.
 - root set 은 메서드영역의 정적 변수, 메서드 실행 시 사용하는 지역변수, 파라미터가 참조 하는 객체를 root set 이라고 한다.
 
 ---
-
-## Exception
-- unchecked exception : 런타임 시 발생할 수 있는 예외로 RuntimeException 을 상속
-    - 발생 시 롤백 처리한다.
-    - 명시적으로 처리하지 않아도 된다.( throws )
-    - NullPointerException
-- checked exception : 컴파일 시 발생할 수 있는 예외
-    - 발생 시 롤백하지 않는다.
-    - 명시적으로 처리해야 한다 ( try-catch )
-    - IOException, SQLException
-
----
 ## static 
 #### public static void main
 - 자바 언어에서 main 메서드가 먼저 실행되기 위해서는 main 메서드가 메모리 상 먼저 로드 뒤어야 한다. 그러기 위해 static 을 사용해 먼저 할당 한 것 이다.
@@ -288,9 +276,44 @@ out.println() // System. 을 생략할 수 있다.
 #### thread safe  ? 
 - 멀티 스레드 환경에서 어떤 메서드 객체 클래스가 여러 스레드로부터 동시 접근이 이루어 져도 프로그램상 문제가 없는 것을 말한다.
 
+---
+
+## Thread
+> 또 하나의 흐름을 만드는 객체 ( 비동기화적 얀산 )
+- 내부에 Runnable 객체를 가지고 있다.
+
+#### Thread 상태
+- 생성
+    - NEW : 스레드가 생성된 상태
+- 실행대기
+    - RUNNABLE : 스레드가 start() 호출이되며 실행 대기 상태로 진입
+- 실행
+    - RUN : CPU 를 할당받고 run 메소드를 실행
+    - 시분할 실행으로 인해 실행대기와 실행 상태를 번갈아 가며 실행된다.
+- 일시정지
+    - 경우에 따라 실행중인 스레드가 실행 대기로 가지 않고 일시정지가 된 후 실행대기가 된다.
+    - waiting : 다른 스레드에서 통지가 있을 때까지 대기
+    - time waiting : 일정 시간 대기
+    - blocked : 사용 할 객체가 잠금되어 있는 상태
+- 종료
+    - 스레드 종료
+###### WAITING vs BLOCKED
+- BLOCKED
+    - 자원을 얻기 위해 모든 스레드가 경쟁을 하는 
+    상태
+    - 어떤 스레드가 자원을 얻을 지 스케줄러가 관여
+- WAITING
+    - 선행 스레드의 알림이 있을 때까지 휴면상태가 되며, 스케쥴러가 이를 고려하지 않음
+
 #### thread 구현 방법
-- thread 클래스를 상속받는다.
-- runnable interface를 구현한다.
+> 두가지 방식이 있으며 두 방식 모두 run() 을 오버라이딩 해야함
+- thread class 를 상속받는다.
+- runnable interface 를 구현한다.
+    - Thread로 구현 할 경우 Runnable 의 run() 을 또 구현해야 하기 때문에 Runnable 을 구현하는것이 일반적이다. ( 일관성을 위해 )
+
+#### run() vs start()
+- run 의 경우 Thread 클래스에 오버라이딩 된 run 을 호출한다. 이 메서드의 경우 내부 Runnable 객체가 있다면 Runnable 의 run() 을 호출하고, 없다면 비어있는 run() 을 호출한다.
+- start 의 경우 JVM 에게 또하나의 콜 스택을 반환받아 또 하나의 흐름을 만드는 것이다.
 
 #### 동기화 vs 비동기화
 ||동기화|비동기화|
@@ -381,4 +404,31 @@ out.println() // System. 을 생략할 수 있다.
 - 컬랙션 객체에 특정 객체만 추가할 수 있도록 한다. 이를 개발자가 일일이 체크하지 않아도 됨.
     - 코드의 간결함, 안정성
 
+---
 
+## Error vs Exception
+- Error
+    - 시스템 레벨에서 발생한 것
+    - 발생 시 복구 불가( try-catch 불가능 )
+- Exception
+    - 개발자가 작성한 로직에서 발생한 오류
+    - 발생 시 후 조치 가능(try-catch 가능)
+    - checked exception vs unchecked exception 으로 나뉜다
+    
+#### Exception
+- unchecked exception : 런타임 시 발생할 수 있는 예외로 RuntimeException 을 상속
+    - 발생 시 롤백 처리한다.
+    - 명시적으로 처리하지 않아도 된다.( throws )
+    - NullPointerException
+- checked exception : 컴파일 시 발생할 수 있는 예외
+    - 발생 시 롤백하지 않는다.
+    - 명시적으로 처리해야 한다 ( try-catch )
+    - IOException, SQLException
+    
+---
+
+## 람다
+- 익명 함수
+    - 함수의 호출부가 없이 매개변수와 몸체로만 이루어짐
+- 코드의 간결성
+- 병렬처리 가능
