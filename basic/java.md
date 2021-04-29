@@ -1,43 +1,27 @@
 # 면접 준비 - JAVA
 > 나만의 언어로 하는 면접준비
 
-## 질문 목차
-- [JDK, JRE, JVM](#jdk,jrm,jvm)
+## 목록
+- [OOP](#oop-(-object-oriented-programming-))
+- [JDK, JRE, JVM](#jdk,-jre,-jvm)
 - [자바의 메모리 구조](#자바의-메모리-구조)
 - [추상 클래스와 인터페이스](#추상-클래스-vs-인터페이스)
 - [Import vs Package](#import-vs-package)
-- [자바의 대표 collection](#자바의-대표-collection)
 - [어노테이션](#어노테이션)
-- [마커 인터페이스](#마커-인터페이스)
-- [Garbage Collector](#garbage-collector)
-- [접근 제어자 4가지](#접근-제어자-4가지)
+- [Java의 키워드](#java의-키워드)
+- [동등성 동일성](#동등성-동일성)
 - [직렬화 역직렬화](#직렬화-역직렬화)
 - [String StringBuilder StringBuffer](#string,-stringbuilder,-stringbuffer)
 - [Synchroized](#synchronized)
+- [Reflection](#reflection)
+- [Stream](#stream)
+- [Final](#final)
+- [Wrapper class](#wrapper-class)
+- [Generic](#generic)
+- [Error vs Exception](#eooro-vs-exception)
+- [람다](#람다)
 
 ---
-
-## JDK, JRE, JVM
-> 범주는 JDK 안에 JRE 안에 JVM 이 있다.  
-- JDK : Java Development Kit 의 약자로 JRE + 개발을 위해 필요한 도구 를 포함한다.  
-- JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일(javac, 디버거, 컴파일러) 을 가지고 있다.  
-- JVM : Java Virtual Machine 의 약자로 자바 소스코드로부터 만들어지는 자바 바이 파일을 실행할 수 있다.  
-
-#### JVM
-> class loader, execution engine, garbage collector, runtime data area 
-- class loader : 자바 파일 컴파일 후 생성된 바이트코드를 엮어 runtime 메모리에 적재하는 역할
-- execution engine : 메모리에 적재된 클래스를 기계어로 변경해 실행하는 역할
-- [garbage collector](#garbage-collector)
-- [runtime data area](#자바의-메모리-구조)
-
-#### Oracle JDK vs OpenJDK
-- 두 JDK의 이는 Oracle 에서는 재산권이 걸린 플러그인을 제공한다.
-- JDK(8버전 이후)가 상업적 용도로 사용된 경우 라이센스 비용을 지불해야 한다.
-- 따라서 기업에서는 jdk8 버전을 많이 사용하고 있다.
-- 초기 ide 설치 후 jdk 11 을 사용했으나, 위 의 사항을 알게되고 jdk 8 버전을 사용하고 있다.
-
-- 8 버전부터 람다, stream 사용 가능 
---- 
 
 ## OOP ( Object Oriented Programming )
 - 프로그램을 객체를 중점으로 어떤 객체가 어떤 일을 할것인지, 어떤 객체와 상호작용을 하는지 를 중심으로 생각하며 프로그래밍 하는 것.
@@ -75,9 +59,45 @@
     - 의존 관계를 맺을 때 변하기 쉬운 객체게 의존해서는 안된다.
      ex) 자동차가 스노우 타이어에 의존 할 시 의존관계를 스노우타이어가 아닌 일반 타이어에 의존해야 한다.
 
-
+[위로](#목록)
 
 ---
+
+## JDK, JRE, JVM
+> 범주는 JDK 안에 JRE 안에 JVM 이 있다.  
+- JDK : Java Development Kit 의 약자로 JRE + 개발을 위해 필요한 도구 를 포함한다.  
+- JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일(javac, 디버거, 컴파일러) 을 가지고 있다.  
+- JVM : Java Virtual Machine 의 약자로 자바 소스코드로부터 만들어지는 자바 바이 파일을 실행할 수 있다.  
+
+#### JVM
+> class loader, execution engine, garbage collector, runtime data area 
+- class loader : 자바 파일 컴파일 후 생성된 바이트코드를 엮어 runtime 메모리에 적재하는 역할
+- execution engine : 메모리에 적재된 클래스를 기계어로 변경해 실행하는 역할
+- [garbage collector](#garbage-collector)
+- [runtime data area](#자바의-메모리-구조)
+
+#### Oracle JDK vs OpenJDK
+- 두 JDK의 이는 Oracle 에서는 재산권이 걸린 플러그인을 제공한다.
+- JDK(8버전 이후)가 상업적 용도로 사용된 경우 라이센스 비용을 지불해야 한다.
+- 따라서 기업에서는 jdk8 버전을 많이 사용하고 있다.
+- 초기 ide 설치 후 jdk 11 을 사용했으나, 위 의 사항을 알게되고 jdk 8 버전을 사용하고 있다.
+- 8 버전부터 람다, stream 사용 가능 
+
+#### Garbage Collector
+- heap 메모리 누수를 막기 위해 자바 자체적으로 사용하지 않는 객체의 메모리 할장을 해제하는 것
+- 힙 메모리가 충분하지 않은 시점에서 메모리 할당 시 수행됨.
+- GC는 가비지(사용하지 않는 객체)를 수거하기 위해 reachability 개념을 사용한다.
+
+##### Reachability 개념
+- 객체가 유효한 참조가 있는지 확인하는 것으로 유효한 참조가 있는 것을 reachable , 유요한 참조가 없는 것을 unreachable 이라고 한다.
+- 이 때 유효한 참조의 기준은 root set 의 참조 여부로 한다.
+
+###### root set ?
+- root set 은 메서드영역의 정적 변수, 메서드 실행 시 사용하는 지역변수, 파라미터가 참조 하는 객체를 root set 이라고 한다.
+
+[위로](#목록)
+
+--- 
 
 ## 자바의 메모리 구조
 - 크게 static stack class 영역으로 나누어 진다.
@@ -96,6 +116,8 @@
 - 생성된 객체( 인스턴스 )타입이 올라간다
 - 생성된 객체의 상위 클래스까지 할당 된다.
 - 가비지 컬렉터가 관리하는 메모리 영역
+
+[위로](#목록)
 
 ---
 
@@ -116,8 +138,9 @@
 - 인터페이스
     - 서로 연관성이 없는 클래스가 같은 행동을 할 수 있는 경우 ( cloneable, comparable 등.. )
 
----
+[위로](#목록)
 
+---
 
 ## import vs package 
 > 컴파일러에게 소스파일에 사용된 클래스 패키지에 대한 정보를 주는 것 
@@ -145,23 +168,7 @@ out.println() // System. 을 생략할 수 있다.
 - import 보다 상단에 명시되어야 하며, 소스 파일당 한 번만 명시 할 수 있다.
 - 다른 역할을 하는 동일 클래스가 만들어 진 경우 이를 구분하기 위해 패키지를 사용하며, 이때 동일 이름 클래스 중 어떤 클래스를 사용할지 명시하기 위해 사용
 
----
-
-## 자바의 Collections Framework
-> Collection을 구현하는 클래스와 Map을 구현하는 클래스가 있다.
-#### Java의 Collection
-- 데이터의 순서나 집합적인 저장공간.
-- 대표적으로 List Set이 있습니다.  
-- List는 중복 데이터 값을 다룰 수 있으며, Set은 중복 데이터 값을 다룰 수 없다.
-- List 는 순서가 있으며, Set은 순서가 없다.
-
-#### Java의 Map
-- key와 value 형태로 데이터를 저장하는 클래스
-- HashMap TreeMap 등이 있다.
-- Key는 중복일 수 없지만, Value 는 중복값을 저장할 수 있다.
-
-
-[이 후 자료구조는 여기 참고](https://github.com/jeonka1001/Study/blob/main/basic/datastructure.md)
+[위로](#목록)
 
 ---
 
@@ -173,9 +180,7 @@ out.println() // System. 을 생략할 수 있다.
 - 예시 : 오버라이드 어노테이션
 - 기존에 특정 라이브러리 클래스의 메서드를 오버라이딩 했는데 그 라이브러리가 업데이트 되며 메서드의 **시그니쳐가 변경** 될 수 있다. 이 때 어노테이션을 통해 자바가 오버라이딩 된 매서드를 인식하여 **컴파일 에러** 를 낼 수 있습니다. 이 경우 개발자가 오류를 발견하기 쉬우며, **코드의 가독성** 또한 증가한다.
 
----
-
-## 마커 인터페이스
+#### 마커 인터페이스
 > 대표적으로 Serializable 인터페이스가 있다.
 - 이는 아무런 메서드를 담고있지 않으며, 이를 구현한 객체가 해당 인터터페이스 타입임을 나타내기 위함이다.
 
@@ -183,22 +188,16 @@ out.println() // System. 을 생략할 수 있다.
 - 일관성을 위해 어노테이션을 사용하는 프레임 워크에서는 어노테이션을 사용하는것이 좋다.
 - 차이점은 인터페이스는 자식 클래스 까지 영향을 미치지만, 어노테이션은 해당 클래스에만 영향을 미친다.
 
----
-
-## Garbage Collector
-- heap 메모리 누수를 막기 위해 자바 자체적으로 사용하지 않는 객체의 메모리 할장을 해제하는 것
-- 힙 메모리가 충분하지 않은 시점에서 메모리 할당 시 수행됨.
-- GC는 가비지(사용하지 않는 객체)를 수거하기 위해 reachability 개념을 사용한다.
-
-#### Reachability 개념
-- 객체가 유효한 참조가 있는지 확인하는 것으로 유효한 참조가 있는 것을 reachable , 유요한 참조가 없는 것을 unreachable 이라고 한다.
-- 이 때 유효한 참조의 기준은 root set 의 참조 여부로 한다.
-
-###### root set ?
-- root set 은 메서드영역의 정적 변수, 메서드 실행 시 사용하는 지역변수, 파라미터가 참조 하는 객체를 root set 이라고 한다.
+[위로](#목록)
 
 ---
-## static 
+
+## Java의 키워드
+> 접근제어자, static 에 대한 정리
+### static 
+- ```static``` 키워드가 붙은 메서드, 클래스, 멤버필드(변수) 를 정적인 형태로 변경한다.
+- 컴파일 시점에 static 메모리에 할당되며, 프로그램 종료 시 사라진다.
+
 #### public static void main
 - 자바 언어에서 main 메서드가 먼저 실행되기 위해서는 main 메서드가 메모리 상 먼저 로드 뒤어야 한다. 그러기 위해 static 을 사용해 먼저 할당 한 것 이다.
 - static 키워드 성격상 인스턴스 없이 호출 가능하다. JVM은 인스턴스 없이 main()을 호출해야 하기 때문에 static 으로 선언한다.
@@ -212,11 +211,26 @@ out.println() // System. 을 생략할 수 있다.
 |생성시점|객체 생성 이전| 객체 생성시|
 |소멸|프로그램 종료시|객체 소멸시|
 
+#### 접근 제어자 4가지
+> public default protected private
+- public 
+    - 모든 범위 공개
+- default 
+    - 동일 패키지
+- protected 
+    - 같은 패키지, 다른 패키지의 상속을 한 하위 클래스만 공개
+- private
+    - 해당 클래스 내에서만 공개
+
+[위로](#목록)
+
 ---
 
-## equals() hashCode() == 
-- ```==``` 의 경우 기본 자료형은 객체가 같은지 비교하지만, 객체나 참조 타입의 경우 객체가 가리키는 주소를 비교한다.
-- ```equals()``` 의 경우 객체의 내용이 같은지 비교한다.  
+## 동등성 동일성
+> 동등성 : 객체가 같은 값을 갖는 것  
+> 동일성 : 객체의 주소가 같은 것  
+- ```==``` 의 경우 기본 자료형을 비교 시 **동등성** 을 비교하지만, 참조 타입을 비교 시 **동일성** 을 비교한다.
+- ```equals()``` 의 경우 참조 타입만 사용 가능하며 **동등성** 을 비교한다.
 #### hashcode 와 equals
 - ```equals``` 에 의해 같은 객체라는 결과가 나온 객체를 ```hash``` 값을 사용하는 자료 구조에 넣었을 경우 중복으로 인식하지 않아 중복된 객체 모두 들어갈 수 있다.
 - 이를 막기위해 객체 내에 ```equals``` 를 재정의했으면 ```hashcode``` 또한 재정의 하여 ```hash``` 계열의 자료구조 사용 시 오류가 없도록 해야한다.
@@ -224,7 +238,7 @@ out.println() // System. 을 생략할 수 있다.
 - 이와 반대로 ```hashcode``` 가 같다고 해서 ```equals``` 가 같지는 않다.
 
 ### valueOf vs parseInt
-- valueOf 의 경우 객체 타입을 리턴하며, parseInt의 경우 원시타입을 리턴한다.
+- valueOf 의 경우 객체 타입을 Boxing 하여 리턴하며, parseInt의 경우 원시타입을 리턴한다.
 
 ### valueOf vs toString vs casting
 ||valueOf|toString|Casting|
@@ -232,18 +246,7 @@ out.println() // System. 을 생략할 수 있다.
 |null|예외 발생하지 않음 (공백 출력)|NPE 발생|NPE 발생|
 |Object is not string type|예외발생X|예외발생X|ClassCastException 발생|
 
----
-
-## 접근 제어자 4가지
-> public default protected private
-- public 
-    - 모든 범위 공개
-- default 
-    - 동일 패키지 공개
-- protected 
-    - 같은 패키지, 다른 패키지의 상속을 한 하위 클래스만 공개
-- private
-    - 해당 클래스 내에서만 공개
+[위로](#목록)
 
 ---
 
@@ -252,6 +255,8 @@ out.println() // System. 을 생략할 수 있다.
 - 역 직렬화는 외부 저장, 전송 데이터를 받아와 복구 후 사용하기 위함.
 - serializable 인터페이스를 구현해야함
 - 동일한 serialVersionUID 를 가지고 있어야 함.
+
+[위로](#목록)
 
 ---
 
@@ -269,6 +274,8 @@ out.println() // System. 을 생략할 수 있다.
 
 #### thread safe  ? 
 - 멀티 스레드 환경에서 어떤 메서드 객체 클래스가 여러 스레드로부터 동시 접근이 이루어 져도 프로그램상 문제가 없는 것을 말한다.
+
+[위로](#목록)
 
 ---
 
@@ -317,6 +324,8 @@ out.println() // System. 을 생략할 수 있다.
 |다음 명령|현재 진행 명령 완료 대기|현재 진행 명령 상관 없음|
 |예시|synchronized|thread|
 
+[위로](#목록)
+
 ---
 
 ## comparable vs comparator
@@ -326,6 +335,8 @@ out.println() // System. 을 생략할 수 있다.
 - comparator : compare(T o1, To2)
     - 사용자 정의 기준을 사용할 때 사용하며, 특수한 목적의 기준을 사용할 때 사용 
 - Ex) 직원 정보 저장 배열을 기본적으로 이름 기준으로 정렬 한다면 comparable 을 사용하며, 이 배열에서 연봉 기준으로 정렬된 것을 보고싶을 시 매번 comparable 을 재 구현하는 것이 아닌 **comparator의 compare() 를 구현해서 이를 기준으로 정렬** 한다.
+
+[위로](#목록)
 
 ---
 
@@ -339,6 +350,8 @@ out.println() // System. 을 생략할 수 있다.
     - 블럭의 전달인자로 lock 을 걸 대상을 지정한다.
     - this 의 경우 메서드 방식과 동일 
 
+[위로](#목록)
+
 ---
 
 ## Reflection
@@ -349,6 +362,8 @@ out.println() // System. 을 생략할 수 있다.
 - 위 에서 투영받은 클래스를 통해 ```getField()``` , ```getMethod()``` 를 사용해서 멤버필드, 메서드를 사용할 수 있다.
 - 이는 확장성에 아주 좋다.
 
+[위로](#목록)
+
 ----
 
 ## stream
@@ -357,6 +372,7 @@ out.println() // System. 을 생략할 수 있다.
 - 람다식을 이용하여 처리하기 때문에 코드가 간결해진다.
     - 기존 iterator 를 이용해서 처리하던 것을 stream 을 이용해서 처리한다.
 
+[위로](#목록)
 
 ----
 
@@ -377,6 +393,8 @@ out.println() // System. 을 생략할 수 있다.
 #### finally
 - try-catch 구문에 사용되는 키워드로 try-catch 이후 마무리 해줘야 하는 작업이 존재하는 경우 해당 작업을 마무리 할 수 있도록 하는 코드 블록
 
+[위로](#목록)
+
 ---
 
 ## wrapper class 
@@ -389,6 +407,8 @@ out.println() // System. 을 생략할 수 있다.
 - NPE( NullPointerException ) 을 방지하기 위한 키워드
 - 제네릭 기법을 통해 감싸고자 하는 객체를 ```Optional``` 객체를 통해 감싸며, ```get``` 을 통해 꺼낼 수 있다.
 
+[위로](#목록)
+
 ---
 
 ## Generic
@@ -396,6 +416,8 @@ out.println() // System. 을 생략할 수 있다.
 - 다양한 타입의 객체를 다루는 메서드나 컬렉션 클래스에서 사용한다.
 - 컬랙션 객체에 특정 객체만 추가할 수 있도록 한다. 이를 개발자가 일일이 체크하지 않아도 됨.
     - 코드의 간결함, 안정성
+
+[위로](#목록)
 
 ---
 
@@ -418,6 +440,8 @@ out.println() // System. 을 생략할 수 있다.
     - 명시적으로 처리해야 한다 ( try-catch )
     - IOException, SQLException
     
+[위로](#목록)
+
 ---
 
 ## 람다
@@ -425,3 +449,5 @@ out.println() // System. 을 생략할 수 있다.
     - 함수의 호출부가 없이 매개변수와 몸체로만 이루어짐
 - 코드의 간결성
 - 병렬처리 가능
+
+[위로](#목록)
