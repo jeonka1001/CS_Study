@@ -5,7 +5,7 @@
 - [시간복잡도](#알고리즘의-시간-복잡도)
 - [정렬](#정렬)
 - [이분 탐색](#이분-탐색)
-- [HashTable](#hash-table)
+- [HashTable](#hashtable)
 - [BFS vs DFS](#bfs-vs-dfs)
 ---
 
