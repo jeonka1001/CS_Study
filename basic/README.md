@@ -1,4 +1,9 @@
 # 목록
+- [알고리즘](https://github.com/jeonka1001/Study/blob/main/basic/algorithm.md)
+- [데이터베이스](https://github.com/jeonka1001/Study/blob/main/basic/database.md)
+- [자료구조](https://github.com/jeonka1001/Study/blob/main/basic/datastructure.md)
+- [자바](https://github.com/jeonka1001/Study/blob/main/basic/java.md)
+- [웹](https://github.com/jeonka1001/Study/blob/main/basic/web.md)
 
 ## 알고리즘
 #### 시간 복잡도를 나타내는 방법
