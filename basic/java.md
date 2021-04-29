@@ -2,8 +2,8 @@
 > 나만의 언어로 하는 면접준비
 
 ## 목록
-- [OOP](#oop-(-object-oriented-programming-))
-- [JDK, JRE, JVM](#jdk,-jre,-jvm)
+- [OOP](#oop)
+- [JDK JRE JVM](#jdk-jre-jvm)
 - [자바의 메모리 구조](#자바의-메모리-구조)
 - [추상 클래스와 인터페이스](#추상-클래스-vs-인터페이스)
 - [Import vs Package](#import-vs-package)
@@ -11,19 +11,19 @@
 - [Java의 키워드](#java의-키워드)
 - [동등성 동일성](#동등성-동일성)
 - [직렬화 역직렬화](#직렬화-역직렬화)
-- [String StringBuilder StringBuffer](#string,-stringbuilder,-stringbuffer)
+- [String StringBuilder StringBuffer](#string-stringbuilder-stringbuffer)
 - [Synchroized](#synchronized)
 - [Reflection](#reflection)
 - [Stream](#stream)
-- [Final](#final)
 - [Wrapper class](#wrapper-class)
 - [Generic](#generic)
-- [Error vs Exception](#eooro-vs-exception)
+- [Error vs Exception](#error-vs-exception)
 - [람다](#람다)
 
 ---
 
-## OOP ( Object Oriented Programming )
+## OOP
+> Object Oriented Programming 객체 지향 프로그래밍
 - 프로그램을 객체를 중점으로 어떤 객체가 어떤 일을 할것인지, 어떤 객체와 상호작용을 하는지 를 중심으로 생각하며 프로그래밍 하는 것.
 
 #### 4가지 특징
@@ -63,7 +63,7 @@
 
 ---
 
-## JDK, JRE, JVM
+## JDK JRE JVM
 > 범주는 JDK 안에 JRE 안에 JVM 이 있다.  
 - JDK : Java Development Kit 의 약자로 JRE + 개발을 위해 필요한 도구 를 포함한다.  
 - JRE : Java Runtime Enviroment 의 약자로 JVM 이 자바 프로그램을 동작시킬 때 필요한 라이브러리, 기타 파일(javac, 디버거, 컴파일러) 을 가지고 있다.  
@@ -193,7 +193,7 @@ out.println() // System. 을 생략할 수 있다.
 ---
 
 ## Java의 키워드
-> 접근제어자, static 에 대한 정리
+> 접근제어자, static, final 에 대한 정리
 ### static 
 - ```static``` 키워드가 붙은 메서드, 클래스, 멤버필드(변수) 를 정적인 형태로 변경한다.
 - 컴파일 시점에 static 메모리에 할당되며, 프로그램 종료 시 사라진다.
@@ -221,6 +221,23 @@ out.println() // System. 을 생략할 수 있다.
     - 같은 패키지, 다른 패키지의 상속을 한 하위 클래스만 공개
 - private
     - 해당 클래스 내에서만 공개
+
+#### final 
+> 해당 키워드가 붙은 대상을 재 선언 불가능 하도록 하는 것
+> Class, Method, Variable, Argument 에 사용가능
+##### Use Class
+- 해당 클래스 상속 불가능
+- 내부 변수 setter를 통해 변경 가능
+##### Use method
+- 해당 메서드의 클래스 상속 시 자식 클래스에서 오버라이딩 불가능
+##### Use Variable
+- 해당 변수 재 선언 불가능
+- 해당 변수에 다른 객체 할당 불가능
+##### Use Argument
+- 전달받은 전달인자 변경 불가능
+
+###### finally
+- try-catch 구문에 사용되는 키워드로 try-catch 이후 마무리 해줘야 하는 작업이 존재하는 경우 해당 작업을 마무리 할 수 있도록 하는 코드 블록
 
 [위로](#목록)
 
@@ -260,7 +277,7 @@ out.println() // System. 을 생략할 수 있다.
 
 ---
 
-## String, StringBuilder, StringBuffer
+## String StringBuilder StringBuffer
 - String 은 객체 타입이기 때문에 heap 에 할당된다. 그러나 불변 객체이기 때문에 기존 객체를 수정 할 경우 새로운 객체가 생성된다. 따라서 이를 막기 위해 ```StringBuffer``` , ```StringBuilder``` 를 사용한다.
 - StringBuffer 와 StringBuilder 는 Thread Safe 에 차이가 있습니다. 단일 스레드에서는 StringBuilder 가 성능이 뛰어나지만 멀티 스레드 환경에서 동기화를 지원하지 않기 때문에 멀티 스레드 환경에서는 StringBuffer 를 사용해야 한다.
 
@@ -375,27 +392,6 @@ out.println() // System. 을 생략할 수 있다.
 [위로](#목록)
 
 ----
-
-## final 
-> 해당 키워드가 붙은 대상을 재 선언 불가능 하도록 하는 것
-> Class, Method, Variable, Argument 에 사용가능
-#### Use Class
-- 해당 클래스 상속 불가능
-- 내부 변수 setter를 통해 변경 가능
-#### Use method
-- 해당 메서드의 클래스 상속 시 자식 클래스에서 오버라이딩 불가능
-#### Use Variable
-- 해당 변수 재 선언 불가능
-- 해당 변수에 다른 객체 할당 불가능
-#### Use Argument
-- 전달받은 전달인자 변경 불가능
-
-#### finally
-- try-catch 구문에 사용되는 키워드로 try-catch 이후 마무리 해줘야 하는 작업이 존재하는 경우 해당 작업을 마무리 할 수 있도록 하는 코드 블록
-
-[위로](#목록)
-
----
 
 ## wrapper class 
 - 감싸다 라는 의미로 기본 타입 데이터를 객체화 시킨 클래스
