@@ -1,36 +1,42 @@
 # 면접준비 - 자료구조
 > 나먼의 언어로 준비하는 면접준비
 
-# 목차
-- [List](#list)
-- [Set](#set)
-- [Map](#map)
-- [Queue](#queue)
+# 목록
+- [Java의 대표 Collection](#java의-대표-collection)
 - [Array vs LinkedList](#array-vs-linkedlist)
 - [Map 종류](#map-종류)
 - [Tree Detail](#tree-detail)
 - [Graph vs Tree](#graph-vs-tree)
 
-## List 
+---
+
+## Java의 대표 Collection
+> 데이터를 보다 효율적으로 다루기 위한 클래스 집합
+- 크레 Collection Interface 를 구현하는 구조와 구현하지 않는 구조로 나뉜다.
+
+### Collection 구현
+#### List 
 > 순서가 있는 데이터의 집합.  
-> 데이터의 중복을 허용한다  
+- 데이터의 중복을 허용한다  
 - 대표적으로 LinkedList, ArrayList,Stack 이 있다.
 - [Queue](#queue)와 다르게 동적으로 메모리를 할당 받는다. 즉, 최대 크기가 없다.
 - 포인터 방식으로 구현되어 있기 때문에 불연속적으로 메모리가 할당된다.
 
-## Set
+#### Queue
+- FIFO (First In First Out) 형태의 자료구조( List와 차이점은 메모리 부분에서 차이가 남)
+- List 와 다르게 일정 크기의 메모리를 할당 받는다.
+    - 최초 할당 받은 크기를 초과하면 재 할당 받는다.
+
+#### Set
 > 순서가 없는 데이터의 집합.  
-> 데이터의 중복을 허용하지 않는다.
+- 데이터의 중복을 허용하지 않는다.
 - 대표적으로 HashSet, TreeSet이 있다.
 
-## Map
+### Collection 비 구현
+#### Map
 > ```Key``` 와 ```Value``` 의 쌍으로 이루어진 데이터 집합.  
-> 순서는 유지되지 않고, 키는 중복을 허용하지 않으며, 값은 중복을 혀용한다
+- 순서는 유지되지 않고, ```key``` 는 중복을 허용하지 않으며, ```value``` 은 중복을 혀용한다
 - 대표적으로 HashMap, TreeMap 이 있습니다.
-
-## Queue 
-- FIFO형태의 자료구조 ( List 와의 차이점은 메모리 부분에서 차이가 난다.)
-- [List](#list) 와 다르게 일정 크기의 메모리를 할당 받는다. 즉, 최대 크기를 넘어가면 다시 재 할당 받는다.
 
 ---
 
@@ -42,22 +48,28 @@
 |검색|연속적이기에 빠르다|불연속적이기에 느리다|
 |삽입 및 삭제| 빈 공간을 다시 채워야 하기 때문에 느리다|해당 데이터를 삭제후 이전,이후 데이터와 연결만 해주면 되기 때문에 빠르다|
 
+[위로](#목록)
+
 --- 
 
 ## Map 종류
-> TreeMap, HashMap, LinkedHashMap
+> Key 와 Value 를 한쌍으로 저장하는 자료구조
+- Key의 중복은 허용되지 않으며, 데이터의 중복은 허용된다.
+- TreeMap, HashMap, LinkedHashMap
 
-### TreeMap 
+#### TreeMap 
 - 입력 값이 입력 순으로 정렬되지 않고 키 값에 의해 정렬됨.
 - 키값의 크기 순이나, 개발자가 따로 구현 한 Comparator 기반으로 정렬 됩니다.
 - 내부적으로 BinaryTree 기반으로 작동 한다.
 
-### HashMap
+#### HashMap
 - 내부적으로 순서가 없이 저장되며, hash 값을 이용해 중복되지 않은 값을 저장한다.
 - 내부적으로 hashtable 기반으로 동작하고 있기 떼문.
 
-### LinkedHashMap
+#### LinkedHashMap
 - 입력 순서대로 저장 되며(Linked) hash 계읠의 특성이 있기 때문에 중복 값을 저장할 수 없다.
+
+[위로](#목록)
 
 ---
 
@@ -97,7 +109,14 @@
 - ReColoring : 부모 노드(형제포함)를 검정, 조부모 노드를 빨강 으로 변경시킨다.
     - 이 후 레드블랙 특성 만족시킨다.
 
-### Graph vs Tree
+[위로](#목록)
+
+---
+
+## Graph vs Tree
+> 데이터 각각의 관계 표현을 중심으로 하는 자료구조
+> 노드(정점, vertex)와 간선(경로, edge) 로 이루어짐
+
 ||tree|graph|
 |---|---|---|
 |사이클 유무|불가능|가능|
@@ -105,3 +124,4 @@
 |경로(간선)의 개수|정점-1|정해지지않음|
 |경로의 방향성|없다|있다(단방향,양방향)|
 
+[위로](#목록)
