@@ -17,6 +17,7 @@
 - 문제를 초기 단계에 파악할 수 있음
 - 수동 검증( 블랙 박스 테스트 )를 하지 않아도 된다.
 
+---
 
 ## 단위 테스트
 먼저 테스트용 클래스를 하나 작성한다.
@@ -54,10 +55,12 @@ public class HelloController {
     }
 }
 ```
-@RestController (= @ResponseBody) : JSON을 반환하는 컨트롤러로 지정됨  
-@GetMapping : 기존 @RequestMapping(method = RequestMethod.GET) 어노테이션과 같은 의미  
+```@RestController (= @ResponseBody)``` : JSON 을 반환하는 컨트롤러로 지정됨  
+```@GetMapping``` : 기존 ```@RequestMapping(method = RequestMethod.GET)``` 어노테이션과 같은 의미  
 
 - 위 의 클래스를 **WAS 를 실행하지 않고** 단위테스트를 할 수 있다.
+
+---
 
 #### 단위 테스트를 하기위한 클래스
 
@@ -103,5 +106,7 @@ public class HelloControllerTest {
 
 이 후 해당 메서드 테스트 시 통과했다면 ```Tests Passed : 1``` , 실패 시 ```Tests Failed : 1``` 이 출력된다.
 
+---
 
+[목차로](https://github.com/jeonka1001/Study/blob/main/springboot/README.md)
 
