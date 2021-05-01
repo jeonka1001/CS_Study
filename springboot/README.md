@@ -13,4 +13,4 @@
     - plugins 검색 시 사용했었음.
 - [lombok 오류 발생 시 ](https://github.com/jojoldu/freelec-springboot2-webservice/issues/2)
 - [스프링 부트 버전 별 차이](https://jojoldu.tistory.com/295)
-- domain 패키지 ? 최범균님의 "DDD start"(지앤선,2016)
+- domain package 관련 : [최범균님의 "DDD start"(지앤선,2016)](https://book.naver.com/bookdb/book_detail.nhn?bid=10615650)
