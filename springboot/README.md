@@ -8,7 +8,7 @@
 - [JPA](https://github.com/jeonka1001/Study/blob/main/springboot/doc/jpa.md)
 ---
 
-## 그 외
+## 참고
 - ```command + shift + A``` : 플러그인 Action 실행 
     - plugins 검색 시 사용했었음.
 - [lombok 오류 발생 시 ](https://github.com/jojoldu/freelec-springboot2-webservice/issues/2)
