@@ -87,6 +87,7 @@ public class HelloControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    // HelloController를 실제로 테스트 하는 비즈니스 코드
     @Test
     public void hello가_리턴된다()throws Exception{
         String hello = "hello";
