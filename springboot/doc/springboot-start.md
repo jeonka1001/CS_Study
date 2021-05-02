@@ -31,7 +31,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management' // 스프링 부트의 의존성을 관리해주는 플러그인 ( 필수 )
 ```
 
-- 이 후 repositories 와 dependencies 에 의존성 걸정 관련 코드를 작정한다.
+- 이 후 ```repositories``` 와 ```dependencies``` 에 의존성 걸정 관련 코드를 작정한다.
 
 ```
 repositories{
@@ -46,7 +46,7 @@ dependencies{
 
 ```
 
-- 모든 코드를 작성 하면 build.gradle 의 전체 코드는 다음과 같다.
+- 모든 코드를 작성 하면 ```build.gradle``` 의 전체 코드는 다음과 같다.
 
 ```
 buildscript{
@@ -83,6 +83,23 @@ dependencies {
 ```
 
 이 후 변경 사항을 반영하면 오른쪽 gradle 탭에서 testComplie 과 mainComplie 에 잘 반영된 것을 확인할 수 있다.
+
+---
+
+## application.properties 정리
+- 쿼리 로그 보기
+    - spring.jpa.show_sql=true 
+- 테이블 엔진 변경
+    - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+- 웹 콘솔 활성화
+    - spring.h2.console.enabled=true > 이후 Application 의 main() 실행
+
+---
+## 웹 데이터베이스 
+웹에서 간단하게 데이터베이스 테스트를 하는 방법으 다음과 같다.
+1. 웹 콘솔 활성화
+2. ```http://localhost:8080/h2-console``` 로 접속
+3. JDBC URL 을 jdbc:h2:mem:testdb 로 변경
 
 ---
 
