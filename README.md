@@ -1,2 +1,3 @@
 # 개발 관련 공부  
-- 경안 -
+- [basic](https://github.com/jeonka1001/Study/tree/main/basic) : 개발 관련 기본 지식 정리
+- [springboot](https://github.com/jeonka1001/Study/tree/main/springboot) : springboot-jpa 공부 정리
