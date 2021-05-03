@@ -1,10 +1,9 @@
 package com.jeonka.web;
 
-import com.jeonka.domain.posts.Posts;
 import com.jeonka.service.posts.PostsService;
-import com.jeonka.web.dto.PostsResponseDto;
-import com.jeonka.web.dto.PostsSaveRequestDto;
-import com.jeonka.web.dto.PostsUpdateRequestDto;
+import com.jeonka.web.posts.dto.PostsResponseDto;
+import com.jeonka.web.posts.dto.PostsSaveRequestDto;
+import com.jeonka.web.posts.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
