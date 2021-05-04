@@ -296,3 +296,40 @@ public class PostsSaveRequestDto {
     - 트랜잭션이 끝나면 최초 조회 상태를 기준으로 변경 사항이 있는 Entity flush 한다.
     - flush : 영속성 컨텍스트에 있는 Entity 를 디비와 동기화 하는것(rollback 가능)
     - commit : 영속성 컨텍스트에 있는 Entity 를 영구적으로 디비에 반영 ( rollback 불가능 )
+
+
+---
+
+## JPA Auditing 
+> 생성시간/수정시간 을 자동으로 주입해주는 기능
+- 기존 Data, Calendar 의 경우 불변객체가 아니기 때문에 멀티 스레드 환경에서 문제가 발생 할 수 있다.
+
+#### 예제 코드
+- 해당 클래스는 JPAEntity 의 상위 클래스가 되어 해당 클래스를 상속한 Entitydml 생성, 수정 시간을 자동으로 관리하는 역할을 한다.
+
+```
+package com.jeonka.domain;
+
+
+import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
+
+@Getter
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseTimeEntity {
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
+}
+```
+- ```@MappedSuperclass``` : 

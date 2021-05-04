@@ -109,5 +109,15 @@ public class HelloControllerTest {
 
 ---
 
+## 그 외
+- ```HttpEntity``` : Http 요청/응답 에 해당하는 HttpHeader, HttpBody 를 포함하는 클래스
+- ```ResponseEntity``` : HttpEntity 를 상속받아 구현한 Response클래스
+- ```RequestEntity``` : HttpEntity 를 상속받아 구현한 Request클래스
+- ```TestRestTemplate``` : 클라이언트 입장에서 API 비즈니스 로직 테스트
+    -  내부 톰켓 서버 구동
+- ```MockMvc``` : 서버 입장에서 구현한 API 비즈니스 로직 테스트
+    -  내부 톰켓 서버 구동하지 않음
+
+---
 [목차로](https://github.com/jeonka1001/Study/blob/main/springboot/README.md)
 
