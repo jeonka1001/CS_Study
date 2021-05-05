@@ -53,9 +53,6 @@ public class MemberApiControllerTest {
 
         ResponseEntity<Long> responseEntity = testTemplate.postForEntity(url, requestDto, Long.class);
 
-
-
-
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
@@ -82,7 +79,7 @@ public class MemberApiControllerTest {
 
         HttpEntity<MemberUpdateRequestDto> httpEntity = new HttpEntity<>(requestDto);
 
-        ResponseEntity<Long> responseEntity = testTemplate.exchange(uri, HttpMethod.PUT, httpEntity, Long.class);
+        ResponseEntity<Long> responseEntity = testTemplate.exchange(uri,HttpMethod.PUT,httpEntity,Long.class);
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
@@ -93,6 +90,16 @@ public class MemberApiControllerTest {
         assertThat(member.getEmail()).isEqualTo(email);
         assertThat(member.getNickName()).isEqualTo(nickName);
         assertThat(member.getPassword()).isEqualTo(password);
+
+    }
+
+    @Test
+    public void Member_삭제테스트(){
+        Member saveMember = memberRepository.save(Member.builder().email("email").password("password").nickName("nickName").build());
+
+        String uri = "http://localhost:"+port+"/api/member/"+saveMember.getId();
+
+        testTemplate.delete(uri);
 
     }
 }

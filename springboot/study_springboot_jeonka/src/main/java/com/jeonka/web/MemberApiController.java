@@ -1,7 +1,6 @@
 package com.jeonka.web;
 
 import com.jeonka.service.member.MemberService;
-import com.jeonka.web.member.dto.MemberDeleteRequestDto;
 import com.jeonka.web.member.dto.MemberSaveRequestDto;
 import com.jeonka.web.member.dto.MemberUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,7 @@ public class MemberApiController {
     }
 
     @DeleteMapping("/apo/member/{id}")
-    public Long delete(@PathVariable Long id, @RequestBody MemberDeleteRequestDto requestDto){
-        return memberService.delete(id);
+    public void delete(@PathVariable Long id){
+        memberService.delete(id);
     }
 }

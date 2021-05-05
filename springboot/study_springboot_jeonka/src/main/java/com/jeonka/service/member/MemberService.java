@@ -32,7 +32,10 @@ public class MemberService {
     }
 
     @Transactional
-    public Long delete(Long id){
-        memberRepository.delete(id);
+    public void delete(Long id){
+        Member entity = memberRepository.findById(id).orElseThrow(
+                ()->new IllegalArgumentException("해당 회원이 존재하지 않습니다. id="+id)
+        );
+        memberRepository.delete(entity);
     }
 }
