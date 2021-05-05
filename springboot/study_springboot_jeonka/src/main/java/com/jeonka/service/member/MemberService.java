@@ -30,4 +30,9 @@ public class MemberService {
 
         return id;
     }
+
+    @Transactional
+    public Long delete(Long id){
+        memberRepository.delete(id);
+    }
 }
