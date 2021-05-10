@@ -229,7 +229,7 @@ import com.jeonka.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor // 의존성 생성자 주입
 @Service
@@ -245,6 +245,7 @@ public class PostsService {
 ```
 해당 ```@Service``` 클래스는 트랜잭션 처리 관련 클래스이다. **트랜잭션을 구성** 하고, ```@Transactional``` 키워드를 통해 자동 **commit** 혹은 **rollback** 이 가능하다.  
 
+- ```import``` 한 클래스가 ```javax.transaction.Transactional``` 가 아닌 ```org.springframework.transaction.annotation.Transactional``` 를 ```import``` 해야 한다.
 다음은 ```Dto``` 클래스를 작성한다.
 
 ```
@@ -332,4 +333,26 @@ public abstract class BaseTimeEntity {
     private LocalDateTime modifiedDate;
 }
 ```
-- ```@MappedSuperclass``` : 
+- ```@MappedSuperclass``` : ```Entity``` 별 공통 속성을 모아두는 클래스에 주로 사용 한다. ( 주로 생성시간, 수정시간, 삭제시간 등 에 해당하는 컬럼에 사용 )
+
+#### Repository 인터페이스에 쿼리 작성
+- JPARepository 를 구현한 인터페이스에 특정 쿼리로 동작하는 함수를 작성할 수 있다. 
+
+```
+package com.jeonka.domain.posts;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import java.util.List;
+
+public interface PostsRepository extends JpaRepository<Posts,Long> {
+
+    @Query("select p from Posts p order by p.id desc")
+    List<Posts> findAllDesc();
+
+}
+```
+- ```@Query``` : 특정 쿼리를 매핑하는 어노테이션 ( 해당 어노테이션이 태그 된 함수가 해당 쿼리로 동작한다. )  
+
+규모가 있는 프로젝트의 경우 조회용 프레임워크 ( MyBatis, querydsl 등 )를 따로 사용한다. 등록/수정/삭제의 경우 SpringDataJpa 를 통해 진행
+
