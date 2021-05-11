@@ -2,13 +2,17 @@ package com.jeonka.service.posts;
 
 import com.jeonka.domain.posts.Posts;
 import com.jeonka.domain.posts.PostsRepository;
+import com.jeonka.web.posts.dto.PostsListResponseDto;
 import com.jeonka.web.posts.dto.PostsResponseDto;
 import com.jeonka.web.posts.dto.PostsSaveRequestDto;
 import com.jeonka.web.posts.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.stream.Collectors;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -36,5 +40,21 @@ public class PostsService {
                 ()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+id)
         );
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long id){
+        Posts posts = postsRepository.findById(id).orElseThrow(
+                ()->new IllegalArgumentException("해당 게시글이 없습니다. Id="+id)
+        );
+
+        postsRepository.delete(posts);
     }
 }
