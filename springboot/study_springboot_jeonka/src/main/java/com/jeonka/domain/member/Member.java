@@ -19,21 +19,31 @@ public class Member {
     private String email;
 
     @Column(length=15, nullable = false)
-    private String nickName;
+    private String name;
 
-    @Column(length=16, nullable = false)
-    private String password;
+    @Column
+    private String picture;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
     @Builder
-    public Member(String email, String nickName, String password){
+    public Member(String email, String name, String picture, Role role){
         this.email = email;
-        this.nickName = nickName;
-        this.password = password;
+        this.name = name;
+        this.picture = picture;
+        this.role = role;
     }
 
-    public void update(String email, String nickName, String password){
-        this.email = email;
-        this.nickName = nickName ;
-        this.password = password;
+    public Member update(String name, String picture){
+        this.picture = picture;
+        this.name = name ;
+        return this;
+    }
+
+    public String getRoleKey(){
+        return this.role.getKey();
+
     }
 }
