@@ -6,7 +6,8 @@
 ---
 
 ## http vs https
-- hypertext transfer protocal (secure) 의 약자
+> hypertext transfer protocal (secure)
+> 웹 상에서 클라이언트와 서버 간에 요청/응답 으로 정보를 주고 받을 수 있는 프로토콜  
 - 기존 http 의 경우 서버 - 브라우저 전송 데이터가 암호화 되지 않음.
 - 이를 방지하기위해 https 의 경우 ssl(socket secure layer)인증서를 사용함.
 
