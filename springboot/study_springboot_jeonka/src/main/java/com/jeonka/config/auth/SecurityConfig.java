@@ -16,6 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        System.out.println(">>>>>>>>>>>>>>>>>>>configure 함수 실행 <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         http.csrf().disable().headers().frameOptions().disable()
                 .and().authorizeRequests()
                 .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**").permitAll()
@@ -26,5 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
+        System.out.println(">>>>>>>>>>>>>>>>>>>configure 함수 종료 <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     }
 }
