@@ -1,6 +1,6 @@
 package com.jeonka.config.auth.dto;
 
-import com.jeonka.domain.member.Member;
+import com.jeonka.domain.user.User;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -11,8 +11,8 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(Member member){
-        System.out.println(">>>>>>>>>>>>>>>>>>>>SessionUser 생성 <<<<<<<<<<<<<<<<<<<<<<<");
+    public SessionUser(User member){
+
         this.name = member.getName();
         this.email = member.getEmail();
         this.picture = member.getPicture();

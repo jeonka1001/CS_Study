@@ -1,7 +1,7 @@
 package com.jeonka.config.auth.dto;
 
-import com.jeonka.domain.member.Member;
-import com.jeonka.domain.member.Role;
+import com.jeonka.domain.user.User;
+import com.jeonka.domain.user.Role;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -46,7 +46,7 @@ public class OAuthAttributes {
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String,Object>attributes){
-        System.out.println(">>>>>>>>>>>>>>>>>>>.ofGoogle<<<<<<<<<<<<<<<<<<<");
+
         return OAuthAttributes.builder()
                 .name((String)attributes.get("name"))
                 .email((String)attributes.get("email"))
@@ -55,8 +55,8 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
-    public Member toEntity(){
-        return Member.builder()
+    public User toEntity(){
+        return User.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)

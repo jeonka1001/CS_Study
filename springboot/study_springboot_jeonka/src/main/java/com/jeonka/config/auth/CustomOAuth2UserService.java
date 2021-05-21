@@ -2,7 +2,7 @@ package com.jeonka.config.auth;
 
 import com.jeonka.config.auth.dto.OAuthAttributes;
 import com.jeonka.config.auth.dto.SessionUser;
-import com.jeonka.domain.member.MemberRepository;
+import com.jeonka.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -15,20 +15,21 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
-import com.jeonka.domain.member.Member;
+import com.jeonka.domain.user.User;
 
 import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    private final MemberRepository memberRepository;
+    private final UserRepository userRepository;
     private final HttpSession httpSession;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest)throws OAuth2AuthenticationException{
-        System.out.println(">>>>>>>>>>>>>>>>loadUser실행<<<<<<<<<<<<<<");
+
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
+
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
@@ -39,21 +40,22 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuthAttributes attributes = OAuthAttributes
                 .of(registrationId,userNameAttributeName,oAuth2User.getAttributes());
 
-        Member member = saveOrUpdate(attributes);
+        User user = saveOrUpdate(attributes);
 
-        httpSession.setAttribute("user",new SessionUser(member));
+        httpSession.setAttribute("user",new SessionUser(user));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(member.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
-    private Member saveOrUpdate(OAuthAttributes attributes){
-        Member member = memberRepository.findByEmail(attributes.getEmail())
+    private User saveOrUpdate(OAuthAttributes attributes){
+        System.out.println(attributes.getEmail());
+        User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(),attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
-        return memberRepository.save(member);
+        return userRepository.save(user);
     }
 }

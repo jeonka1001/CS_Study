@@ -1,6 +1,6 @@
 package com.jeonka.config.auth;
 
-import com.jeonka.domain.member.Role;
+import com.jeonka.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        System.out.println(">>>>>>>>>>>>>>>>>>>configure 함수 실행 <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
         http.csrf().disable().headers().frameOptions().disable()
                 .and().authorizeRequests()
                 .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**").permitAll()
@@ -27,6 +27,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
-        System.out.println(">>>>>>>>>>>>>>>>>>>configure 함수 종료 <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     }
 }
