@@ -72,3 +72,30 @@ public enum Role {
 
 - 이 후 build.gradle 에 의존성을 추가해 준다
     - ```compile('org.springframeworkboot:spring-boot-starter-oauth2-client')```
+
+#### 어노테이션을 활용한 코드 개선
+
+아래 코드는 **세션값을 가져오는 어노테이션** 을 생성한 것이다.
+```
+package com.jeonka.config.auth;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface LoginUser {
+    
+}
+```
+```@Target ``` : 이 어노테이션이 생성될 수 있는 위치를 지정
+
+## Session 저장소 설정
+- 여러 개의 서버에서 세션 동기화를 위해 세선을 데이터 베이스에 저장한다.
+- 기존 session 의 경우 서버 재 구동 시 
+
+#### WebMvcTest
+- WebMvcTest 는 @Repository, @Service, @Component 는 스캔하지 않는다.
+    - 즉, CustomOAuth2UserService 는 읽을 수 없다.

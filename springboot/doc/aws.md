@@ -30,16 +30,36 @@
 
 EC2 접속을 위해 아래와 같은 절차를 진행한다.  
 - 키 위치 변경
-- config 파일 생성
+    - ```cp [기존 키 위치] ~/.ssh/``` 
+    - ex ) cp ~/Documents/pem/freelec-springboot2-webservice.pem ~/.ssh/
+- ```~/.ssh``` 폴더 하위에 ```config``` 파일 생성
+    - vi ~/.ssh/config
+    - 해당 config 파일 내용은 아래와 같다
+
+    ```
+    Host [실행 시 사용 할 호스트 이름] 
+        HostName [EIP]
+        User ec2-user
+        IdentityFile [파일의 위치]
+
+    Host freelec-springboot2-webservice
+        HostName 3.37.32.130
+        User ec2-user
+        IdentityFile ~/.ssh/freelec-springboot2-webservice.pem
+    ```
 - 키 권한 변경
+    - chmod 600 ~/.ssh/freelec-springboot2-webservice.pem
 - config 권한 변경
+    - chmod 700 ~/.ssh/config
 - 접속
+    - ssh [Hoat] 
+    - ex) ssh freelec-springboot2-webservice
 
 #### Java-Spring 기반 서비스 AWS 사용 시 주의사항
 - 프로젝트에 맞는 Java 버전 설치
     - 해당 프로젝트는 Java 8 이며, 기본 AWS 설치 버전은 7 버전이다.
 - 타임존 변경
-    - 기본 서버 시간은 미국이므로 한국 시간대 설정을 해줘야 함
+    - 기본 EC2 시간은 미국이므로 한국 시간대 설정을 해줘야 함
 - 호스트네임 변경
     - 현재 접속한 서버의 별명 등록 ( 실무에서는 여러 서버를 구동하므로 별명을 등록해줘야 함 )
 
@@ -48,3 +68,26 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
     2. ```sudo yum install -y java-1.8.0-openjdk-devel.x86_64``` 를 이용해서 Java8 버전 설치
     3. ```sudo /usr/sbin/alternatives --config java ``` 를 이용해서 java 버전 변경
     4. ```java -version``` 을 이용해 자바 버전 확인
+2. 타임존 변경
+    1. 서버 접속
+    2. 기존 서버시간 삭제
+        - ```sudo rm /etc/loacltime```
+    3. 아시아 서버 시간으로 변경
+        - ```sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime```
+    4. 변경 확인
+3. HostName 변경
+> Amazon Linux 2 와 Amazon Linux AMI 의 변경 방법이 약간 다르다.  
+
+- Amazon Linux 2
+    - ```hostnamectl``` 명령어를 이용해서 수정한다.
+    - sudo hostnamectl set-hostname [원하는 host name]
+- Amazon Linux AMI
+    - ```sysconfig/network``` 파일 수정을 통해 HOSTNAME 을 변경한다
+
+위 두가지 중 해당하는 것에 대해 수정을 했다면 ```/etc/hosts``` 에 ```HOSTNAME``` 을 등록한다.  
+이 후 ```curl [등록한호스트이름]``` 을 통해 호스트 이름 등록을 확인한다.  
+- (6) Could not resolve host ~~~ : 등록 실패
+- (7) Failed to connect to ~~ : 등록 성공 ( 호스트 등록은 잘 됐으나 80 포트로 실행된 서비스가 없기 때문에 발생 )
+
+
+
