@@ -220,9 +220,6 @@
 
 
 <!-- 
-자료구조
-> List Set Map Queue Stack
-
 Http 통신
 > hyper text transfer protocol 
 > 인터넷에서 데이터를 주고 받기 위한 프로토콜
