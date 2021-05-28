@@ -121,3 +121,22 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
 1. ssh 명령어로 서버 접속
 2. ```sudo yum install mysql``` 을 이용하여 mysql 설치
 3. mysql -u [유저이름] -h [호스트] -p [비밀번호] 를 통해 접속, 이 때 host의 경우 인텔리제이와 동일
+
+## 배포
+1. 서버에 git 설치 및 clone
+2. .gradelw test 를 이용하여 해당 프로젝트 테스트
+3. 배포 스크립트 만들기 ( 아래 과정을 포괄 )
+    >git clone 또는 git pull 을 통해 새 버전의 프로젝트를 받는다.  
+    >Gradle 이나 Maven 을 통해 프로젝트 테스트와 빌드  
+    >EC2 서버에서 해당 프로젝트 실행 및 재실행  
+4. 배포 스크립트 권한 추가 후 실행
+5. nohup.out 파일을 열어 로그 확인
+
+#### 권한 추가
+- application-oauth.properties 파일 생성
+7. nohup 확인
+
+#### RDS 접근
+
+
+
