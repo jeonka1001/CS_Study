@@ -35,6 +35,9 @@ deploy:
    acl: private
    local_dir: deploy
    wait-until-deployed: true
+   branches:
+    only:
+	 - main
 
 notifications:
  email:
