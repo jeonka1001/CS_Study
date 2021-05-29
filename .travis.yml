@@ -39,4 +39,4 @@ deploy:
    skip_cleanup: true
    acl: private
    local_dir: deploy
-   wait-util-deployed: true
+   wait-until-deployed: true
