@@ -160,5 +160,10 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
 
 위 의 사항을 지키는 CI 구축을 위해 **github** 에서 무료로 제공하는 **TravisCI** 를 사용할 것이다.  
 
+#### Travis CI 연동
 
+1. https://travis-ci.org 에서 깃허브 계정으로 로그인
+2. 계정 Setting - 동기화
+3. 프로젝트 .travis.yml 파일 생성 ( 연동된 Repository 최상단에 둬야 한다. )
+    - branches, cahce, script, notifications 설정
 
