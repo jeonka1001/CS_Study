@@ -7,8 +7,11 @@ branches:
  only:
     - main
 
-before_script:
-  - cd springboot/study_springboot_jeonka/
+#before_script:
+#  - cd springboot/study_springboot_jeonka/
+
+before_install:
+  - chmod +x gradlew
 
 #Travis CI 서버의 home
 cahce:
