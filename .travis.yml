@@ -8,8 +8,8 @@ branches:
     - main
 
 before_script:
-  - "cd springboot/study_springboot_jeonka/"
-  - "pwd"
+  - cd springboot/study_springboot_jeonka/
+  - pwd
 
 #Travis CI 서버의 home
 cahce:
@@ -26,6 +26,7 @@ notifications:
       - ruddks2009@naver.com
 
 before_deploy:
+ - pwd
  - zip -r freelec-springboot2-webservice
  - mkdir -p deploy
  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
