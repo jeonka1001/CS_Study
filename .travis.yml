@@ -7,6 +7,10 @@ branches:
  only:
     - main
 
+before_script:
+  - "cd springboot/study_springboot_jeonka/"
+  - "pwd"
+
 #Travis CI 서버의 home
 cahce:
   directories:
@@ -16,8 +20,8 @@ cahce:
 script: "./gradlew clean build"
 
 # CI 실행 완료 시 메일로 알람
-notifications:
-  email:
-    recipients:
-      - ruddks2009@naver.com
+#notifications:
+#  email:
+#    recipients:
+#      - ruddks2009@naver.com
 
