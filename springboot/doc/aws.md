@@ -137,6 +137,28 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
 7. nohup 확인
 
 #### RDS 접근
+> RDS 접근을 위해서는 아래 작업을 진행해야한다.
+1. 테이블 생성
+    - 기본 테이블 생성 (프로젝트 실행 시 로그에 나오는 쿼리문 복붙 가능), session table 생성 ( command + shift + o -> schema-mysql.sql )
+2. 프로젝트 설정
+    - mariadb 드라이버를 build.gradle 에 등록
+    - 서버에서 구동될 환경 추가 ( application-real.properties 를 만든다. profile=real 이 추가됨)
+3. EC2 설정
+    - 서버에 application-real-db.properties 를 만든다 ( 디비 접근 계정 및 host )
+    - 실행 ( curl localhost:8080 ) 후 html 코드가 나오면 성공
+4. 브라우저에서 실행
+    - google, naver에 public ip dns 와 pid:8080/login/oauth2/code/[domain] 을 입력한다.
+
+## CI CD 자동화
+> 서비스 배포 환경 구축 ( CI Continuous Integration 지속적인 통합 , CD Continuous Deployment 지속적인 배포)  
+
+- CI 규칙
+    - 모든 소스 코드가 살아 있고(현재 실행되고) 누구든 현재 소스에 접근할 수 있는 단일 지점을 유지
+    - 빌드 프로세스를 자동화 해서 누구든 소스로부터 시스템을 빌드하는 단일 명령어 사용
+    - **테스팅을 자동화** 해서 단일 명령어로 언제든지 시스템에 대한 건전한 테스트 수트를 실행
+    - 누구나 현재 실행 파일을 얻으면 지금까지 가징 **완전한 실행 파일** 을 얻었다는 확신을 하게 할 것  
+
+위 의 사항을 지키는 CI 구축을 위해 **github** 에서 무료로 제공하는 **TravisCI** 를 사용할 것이다.  
 
 
 
