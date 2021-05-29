@@ -161,9 +161,25 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
 위 의 사항을 지키는 CI 구축을 위해 **github** 에서 무료로 제공하는 **TravisCI** 를 사용할 것이다.  
 
 #### Travis CI 연동
-
 1. https://travis-ci.org 에서 깃허브 계정으로 로그인
 2. 계정 Setting - 동기화
-3. 프로젝트 .travis.yml 파일 생성 ( 연동된 Repository 최상단에 둬야 한다. )
-    - branches, cahce, script, notifications 설정
+3. 프로젝트 .travis.yml 파일 생성 ( 프로젝트의 최상단이 아닌 연동된 Repository 최상단에 둬야 한다. )
+    - branches, cahce, script, notifications, before_script 설정
+4. commit - push 후 travis 에서 해당 레포지토리 history 확인
+
+#### Travis - AWS 연동
+1. AWS에 접근 가능한 권한을 가진 Key 생성
+    - AWS console - IAM - 접근 가능한 사용자 추가
+    - 권한 : 기존 정책 직접 연결 ( AmazonS3FullAccess, AWSCodeDeployFullAccess )
+    - 태그 : Name = freelec-travis-deploy
+2. 생성한 권한의 AWS_ACCESS_KEY, AWS_SECRET_KEY 를 Travis의 Repository 의 setting 에서 등록한다.
+    - AWS에서 Key 생성 시 secretkey 는 생성 최초 1회만 볼 수 있기 때문에 따로 저장해야한다.
+3. S3(Simple Storage Service) 버킷 생성
+    - 일종의 파일 서버
+    - EC2 에 배포할 Zip 파일이 이 곳에 모인다.
+    - 엑세스 차잔 - 모두 차단
+4. .travis.yml 에 배포 파일 전달을 위한 코드 작성
+
+
+
 
