@@ -6,7 +6,8 @@ jdk:
 branches:
  only:
     - main
-
+before_script:
+  - pwd
 #Travis CI 서버의 home
 cahce:
   directories:
