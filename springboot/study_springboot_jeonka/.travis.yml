@@ -9,7 +9,7 @@ branches:
 
 before_script:
   - cd springboot/study_springboot_jeonka/
-
+  - pwd
 before_install:
   - chmod +x gradlew
 
