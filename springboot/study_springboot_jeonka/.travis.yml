@@ -20,7 +20,10 @@ cahce:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
-script: "./gradlew clean build"
+script:
+  - "cd springboot/study_springboot_jeonka/"
+  - "pwd"
+  - "./gradlew clean build"
 
 ## CI 실행 완료 시 메일로 알람
 #notifications:
