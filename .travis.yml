@@ -20,9 +20,8 @@ cahce:
 script: "./gradlew clean build"
 
 before_deploy:
- - pwd
- - ls -a
- - zip -r freelec-springboot2-webservice
+ - cd ..
+ - zip -r freelec-springboot2-webservice.zip study_springboot_jeonka
  - mkdir -p deploy
  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
 
