@@ -66,6 +66,8 @@
 - 메서드 중 공통으로 사용하는 기능적인 역할을 비즈니스 로직에서 분리하여 코드의 중복 없이 재활용하는 것 
     - 분리 대상 : 데이터베이스 연결, 로깅, 파일 입출력 등 ( 비즈니스 로직이 아닌 기능적인 역할 )
 
+<!-- https://velog.io/@max9106/Spring-%ED%94%84%EB%A1%9D%EC%8B%9C-AOP-xwk5zy57ee -->
+
 ---
 
 ## PSA ( portable service abstraction )
@@ -98,6 +100,10 @@
 ###### 모든 Component 를 @Component로 다 쓰지 않는 이유는 ? 
 예를 들어 @Repository 는 DAO 에 붙이는 어노테이션 인데 DAO 메소드에서 런타임 시 발생할 수 있는 예외
 
+#### @Transactional
+- 데이터베이스 트랜잭션을 지원하는 어노테이션
+- 해당 어노테이션이 있는 함수는 실행 전에 함수 앞에 Begin Transaction 구문과 함수 뒤에 Commit Transaction 혹은 Rollback Transaction 이 삽입된다.
+    - Begin Transaction 은 AutoCommit 을 비활성화 해주며, Commit 혹은 Rollback이 될 경우 다시 활성화 된다.
 ---
 
 ## Filter vs Interceptor
