@@ -180,6 +180,12 @@ EC2 접속을 위해 아래와 같은 절차를 진행한다.
     - 엑세스 차잔 - 모두 차단
 4. .travis.yml 에 배포 파일 전달을 위한 코드 작성
 
-
-
-
+#### Travis CI & AWS S3, CodeDeploy 연동
+1. EC2가 CodeDeploy연동 가능하도록 역할 생성
+    - EC2RoleForA 검색 후 Deploy 정책이 있는 역할 생성
+2. 역할을 EC2 서비스에 등록 
+    - 보안 - IAM 역할 연결/바꾸기 후 재부팅
+3. terminal 에서 ec2 접속 후 codedeploy agent 설치
+    - aws s3 cp s3://aws-codedeploy-ap-northeast-2/latest/install . --region ap-northeast-2
+    - sudo yum install ruby
+    - 

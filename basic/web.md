@@ -207,7 +207,7 @@
 > 데이터 단위 : Data/Message
 - 기존 OSI 7계층의 응용, 표현, 세션 계층에 해당된다.
 - TCP/UDP 기반 응용 프로그램 구현시 사용 ( 대표적으로 Http의 경우 TCP 방식으로 통신한다.)
-- 파일전송, 이메일, DNS, HTT, FTP SSH 등
+- 파일전송, 이메일, DNS, HTTP, FTP SSH 등
 
 #### Transport Layer
 > 데이터 단위 : Segment, 전송주소 : Port  
