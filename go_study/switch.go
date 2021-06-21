@@ -13,7 +13,7 @@ package main
 // 		fmt.Println("초등생2");
 // 	default:
 // 		fmt.Println("학생 아님");
-// 	}
+// 	}""
 
 // 	switch {
 // 		case age > 1 :
