@@ -3,17 +3,18 @@ package main
 // import "fmt"
 
 // func main() {
-// 	var arr [5]int
-// 	arr2 := []int{3, 4, 5}
+// 	arr := [5]int{}
+// 	slice := []int{}
 // 	arr[0] = 1
-// 	fmt.Println(arr[0])
-// 	fmt.Println(len(arr2))
-// 	aLen := len(arr2)
-// 	sum := 0
-// 	for i := 0; i < aLen; i++ {
-// 		sum += arr2[i]
+// 	slice = append(slice, 1)
+
+// 	arr_copy := arr
+// 	slice_copy := slice
+
+// 	fmt.Printf(" arr : %d , copy : %d\n", &arr[0], &arr_copy[0])
+// 	fmt.Printf("slice : %d, slice_copy : %d \n", &slice[0], &slice_copy[0])
+
+// 	for i, arr := range arr {
+// 		fmt.Printf("%d : %d\n ", i, arr)
 // 	}
-// 	fmt.Println(sum)
-// 	arr3 := [][]int{{1, 2}, {2, 3}, {2}}
-// 	fmt.Println(arr3)
 // }
