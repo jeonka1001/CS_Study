@@ -163,5 +163,47 @@ fmt.Println() 을 통해 **zoo** 를 출력하면 ***map 의 형태 그대로** 
 위의 코드의 결과는 ```기린```이 존재 할 경우 val 에 기린의 값, ok 에 true 가 들어간다. 그러나 존재하지 않을 경우 0, false 가 들어간다. 
 이는 어떤 원리인지 더 찾아봐야겟다.
 
+## 함수
+- 함수의 선언  
+GO 언어의 함수는 아래와 같이 선언된다.
+```
+func 함수명( 매개변수명 매개변수타입) 반환타입{
+    // 함수 정의
+}
+
+fun operator ( x int, y int) (int,int){ 
+    return x+y, x-y
+}
+```
+위 코드에서 볼 수 있듯이 매개변수, 반환갑이 여러개이면 매개변수처럼 하나하나 선언할 수 있고, 반환값처럼 한번에 선언할 수 있다.
+```
+func operator(x,y int) (re1, re2 int){
+    re1 = x + y
+    re2 = x - y
+    return
+}
+```
+만약 위 코드처럼 반환 값에 이름을 선언하면 **return 만 하더라도** 알아서 해당 값이 **반환** 된다.
+
+#### defer
+> 함수가 반환값을 return 후 실행하는 구문
+만약 아래와 같은 코드가 있다고 가정한다.
+```
+fun foo (x, y int) int {
+    defer fmt.Println("add finish")
+    fmt.Println("foo operate")
+    return x + y
+}
+func main(){
+    fmt.Println(foo(5,6))
+}
+```
+위 의 경우 실행 결과는 아래와 같다.
+```
+foo operator
+add finish
+11
+```
+즉, ```return``` 전까지 함수의 기능을 수행 후 특정 값을 반환 후 함수 종료 직전 ```defer``` 를 수행한다. 그 후 함수가 종료된다.
 
     
