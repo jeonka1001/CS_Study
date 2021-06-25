@@ -206,4 +206,52 @@ add finish
 ```
 즉, ```return``` 전까지 함수의 기능을 수행 후 특정 값을 반환 후 함수 종료 직전 ```defer``` 를 수행한다. 그 후 함수가 종료된다.
 
-    
+#### 함수의 변수화
+> 함수는 변수처럼 선언할 수 있고, 변수처럼 사용될 수 있다.  
+만약 아래와 같은 함수가 선언되어 있다고 가정한다.
+```
+func foo( x int ) int {
+    return x + 2
+}
+```
+이를 ```main``` 함수에서는 변수처럼 사용할 수 있는 방법이 존재한다.
+```
+func main (){
+    foo_value := foo // foo 변수화
+    foo_value() // foo 실행
+}
+```
+또는 선언과 동시에 변수화도 가능하다. 이는 익명함수와 비슷하다.  
+```
+func main(){
+    foo_value := fun(x int )int {
+        return x + 10
+    } // foo_value 함수 선언
+    foo_value() // 호출
+
+}
+```
+위 의 방식대로 함수를 변수화 했다면 함수의 전달인자로 함수를, 함수의 반환값으로 함수를 사용할 수 있다.  
+위에서 만든 ```foo_value``` 를 전달인자로 사용한다면 아래와 같다.
+```
+func func_test( func_param func(int)int ){
+    fmt.Println(func_param(7))
+}
+
+func main(){
+    func_test(foo_value) // 위에서 만든 함수
+}
+```
+```foo_value``` 의 매개변수, 반환값이 int, int 이므로 func_test 의 매개변수 또한 ```func(int)int``` 가 된다.  
+
+또한 아래와 같이 함수의 반환값을 함수로 할 수 있다. 이는 익명함수와 비슷하다.  
+```
+func foo_test(x int) func() {
+    return func{ fmt.Println("hello",x)}
+}
+func main(){
+    returnFunction := foo_test(5)
+    returnFunction()
+}
+```
+위 처럼 함수의 반환값을 함수로 했으므로 변수에 해당 반환값을 저장하여 실행할 수 있다. 바로 실행하고 싶은 경우 ```foo_test(5)``` 를 호출 후 바로 ```foo_test(5)()``` 로 실행할 수 있다.
