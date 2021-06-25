@@ -288,3 +288,24 @@ str := fmt.Sprintf("해당 데이터는 %T 타입이고, 값은 %d 이다.\n", n
 
 ```%T``` 는 해당 변수의 타입을 출력하며, 이 외 ```%q ( 문자열에 "" 를 포함하여 출력 )``` 등 여러가지 포멧 문자가 있다.  
 이 외 다양한 format 문자는 [여기](https://golang.org/pkg/fmt) 를 참고하면 된다.
+
+## 입력 받기
+> Java의 BufferedReader 와 같은 역할  
+GO 언어에서 사용자의 입력을 받기 위해서는 ```bufio``` 패키지의 ```NewScanner``` 를 사용해야 한다.  
+```
+scan1 := bufio.NewScanner(od.stdin)
+// NewSacnner 가 입력받을 파이프라인( os.stdin )을 전달인자로 보내준다.
+```
+이 후 ```NewScanner``` 의 ```Scan()``` 을 통해 입력을 받는다. 입력받은 값은 ```Text()``` 를 통해 최근 입력받은 ```string token``` 을 반환받을 수 있다.  
+```
+scan1.Scan() // 사용자에게 입력을 받는다.
+input := scan1.Text() // 입력받은 최근 string token 을 반환받는다
+```
+만약 입력받은 값이 ```string``` 이 아닐 경우 ```strconv package``` 를 통해 변환해줄 수 있다.
+
+```
+num := strconv.ParseInt(scan1.Text(),10,64)
+// parsing 값, 표현 할 진수, 표현할 비트 수 
+// scan1.Text(), 10진수, 64비트
+```
+
