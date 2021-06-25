@@ -101,7 +101,7 @@ ex) import (
 )
 ```
 
-## Array
+## Array vs Slice
 > Slice vs Array
 - Array : 정적인 배열
     - var arr [...]int 
@@ -126,3 +126,42 @@ for _, v := range arr {
 ```
 여기서 _ 는 익명의 반복자로, 특정 변수를 선언해 줄 경우 사용해야하며, 사용하지 않을 시 익명으로 선언 가능하다.  
 위 의 경우 arr의 범위만큼 반복문을 수행한다.
+
+## Map
+> Key, Value 를 하나의 묶음으로 저장하는 자료구조  
+- 선언방식
+```
+var 이름 map[key_type]value_type = map[key_type]value_type{
+        //.. 초기화
+    }
+```
+- 예시
+```
+var zoo map[string]int = map[string]int {
+    "코끼리":7,
+    "사자":5,
+}
+```
+특이점은 마지막 원소 뒤에도 ```,``` 를 써줘야 한다.  
+값을 넣을 때는 아래와 같이 한다.  
+```
+// 이름[key] = value
+zoo["코알라"] = 9
+```
+값을 삭제 시 ```delete``` 함수를 사용한다.
+```
+delete(이름,key_value)
+delete(zoo,"코알라")
+```
+만약 키가 존재하지 않는다면 아무런 변화도 일어나지 않는다.
+
+- 출력
+fmt.Println() 을 통해 **zoo** 를 출력하면 ***map 의 형태 그대로** 출력이 된다. 그러나 **map의 특정 키에 접근** 해서 출력을 하면 해당하는 **value** 가 출력이 된다.
+
+- map 응용 ( 추후 수정 )
+```val, ok := zoo["기린"]```  
+위의 코드의 결과는 ```기린```이 존재 할 경우 val 에 기린의 값, ok 에 true 가 들어간다. 그러나 존재하지 않을 경우 0, false 가 들어간다. 
+이는 어떤 원리인지 더 찾아봐야겟다.
+
+
+    
