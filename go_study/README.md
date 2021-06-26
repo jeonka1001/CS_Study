@@ -309,3 +309,32 @@ num := strconv.ParseInt(scan1.Text(),10,64)
 // scan1.Text(), 10진수, 64비트
 ```
 
+## 구조체
+> Java 의 Class 와 비슷한 개념
+GO 언어에서는 ```struct``` 라는 구조체 개념을 사용한다. 이는 객체 지향적 프로그래밍을 하기 위해 사용하는것이다. Java 의 Class 에서는 객체 내부에 메서드 까지 포함했지만, GO 언어의 ```struct``` 에는 ```field``` 만 **포함하는 ```field``` 의 집합** 이다.  
+
+- 선언 방식
+```
+type 구조체명 struct { // 멤버 필드 .. }
+type Duck strcut {
+    name string
+    age int
+}
+```
+- 구조체 변수 생성 방식
+```
+func main (){
+    duck1 := Duck{} // 초기화 되지 않은 Duck 의 빈 객체 생성
+    duck2 := Duck{name : "Lex", age : 1} // 객체 생성과 동시에 초기화
+    duck3 := Duck{age : 1} // 이런식으로 모든 객체를 초기화 하지 않아도 된다.
+}
+```
+- 구조체 내 필드값 변경
+```
+duck2.age = 2 // duck2 의 나이 변경
+duck2.name = "jeonka"
+```
+- 구조체 출력
+```
+fmt.Println(duck2) // {jeonka 2} 출력
+```
