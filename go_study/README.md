@@ -338,3 +338,64 @@ duck2.name = "jeonka"
 ```
 fmt.Println(duck2) // {jeonka 2} 출력
 ```
+
+#### 구조체와 연관된 메서드 선언
+> 구조체에는 멤버필드만 선언하기 때문에 해당 구조체에 관련된 메서드는 따로 선언하여 엮어준다.  
+```
+func (리시버 이름 리시버 타입) 메소드 이름 (전달인자) 반환값 { }
+func (d *Duck) sound () {
+    fmt.Println(d.name);
+}
+```
+위 처럼 리시버 타입을 엮어줄 때 ```*``` Pointer 를 사용하여 엮어줘야 해당 객에체 반영된다.  
+- 만약 이러한 메서드가 많다면 ? 
+어떤 객체의 속성(멤버필드)은 구조체라는 것으로 묶어준다. 만약 구조체에 해당하는 메서드가 많다면 묶어주는 방법이 없을까 ?  
+=> 인터페이스로 묶어줄 수 있다.  
+```
+type 행위명 interface{ 
+    메서드1
+    메서드2
+    ...
+}
+type do_duck interface {
+    sound()
+    fly()
+}
+```
+위 처럼 묶인 메서드는 인터페이스를 통해 접근할 수 있다.
+```
+func play(do do_duck){
+    do.sound()
+    do.fly()
+}
+func main() {
+    var duck1 Duck
+    var duck2 Duck
+    play(duck1)
+}
+```
+
+## 동시성
+> GO 언어에서 동시성 구현을 위해 go 루틴을 사용한다.
+> Go 루틴은 기존 일련 처리를 병렬 처리로 되게 해주는 것  
+- ```sync.WaitGroup``` 객체를 이용해서 동시성을 구현한다.  
+예시 코드는 아래와 같다
+```
+var wg sync.WaitGroup
+
+func foo (){
+    defer wg.Done()
+}
+
+func main (){
+    wg.Add(3)
+    go foo()
+    go foo()
+    go foo()
+    wg.Wait()
+}
+```
+- sync.WaitGroup 의 메서드  
+Add : 동시성 구현을 위해 Go 루틴 추가 ( 전달인자로 몇개의 루틴을 추가 할 지 전달)
+Done : 수행중인 Go 루틴 종료 알림
+Wait : 다른 Go 루틴이 끝날때까지 기다림
