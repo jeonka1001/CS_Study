@@ -1,2 +1,2 @@
 ## REST_API 
-- [cors](https://github.com/jeonka1001/Study/new/master/REST_API/cors.md)
+- [CORS](https://github.com/jeonka1001/Study/new/master/REST_API/CORS.md)
