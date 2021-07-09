@@ -1,6 +1,10 @@
 # CORS
 > Cross Origin Resource Sharing  
 > 다른 출처의 리소스 공유하기  
+> 브라우저 상에서 나타나는 문제 
+
+- 악성 홈페이지에 접속하면 해당 홈페이지의 소스코드가 브라우저에 다운로드 됨. 이때 내 크롬 내 인증 정보를 빼낼 수 있기 때문에 이를 방지하게 위해 사용한다.
+
 - 다른 출처의 리소스는 신뢰가 어렵기 때문에 ```CORS``` 를 지켜야 사용할 수 있다.  
 - 클라이언트 웹 브라우저의 경우 개발자 도구만 사용해도 모든 소스코드를 열람할 수 있기 때문에 ```CORS``` 와 같은 방어책이 필요하다.  
 
@@ -80,5 +84,15 @@
 |include|모든 요청에 인증 정보를 담을 수 있다|
 |omit|모든 요청에 인증 정보를 담지 않는다|
 
-이 중 ```same-origin```, ```include``` 옵션을 사용한다면, 브라우저는 ```Access-Control-Allow-Origin``` 만 확인하지 않는다.  
+이 중 ```same-origin```, ```include``` 옵션을 사용한다면, 브라우저는 ```Access-Control-Allow-Origin``` 만 확인하지 않는다.  ( 다른 검사 조건 추가 )  
 
+- ```Access-Control-Allow-Origin : *``` , ```credentials : same-origin``` 일 경우   
+    - 이 경우 다른 출처 모두 허용이기 때문에 어느 곳이던 리소스 요청 가능
+    - ```same-origin``` 이기 때문에 같은 출처일 경우면 인증정보를 확인한다.  
+
+즉, 안전한 정보로 결론을 내린다.
+
+- ```Access-Control-Allow-Origin : *``` , ```credentials : include ``` 일 경우 
+    - ```include``` 는 모든 요청에 인증 정보를 담을 수 있음
+    - 따라서 출처에 상관없이 인증 정보 검토 
+ 
